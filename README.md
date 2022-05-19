@@ -36,5 +36,4 @@ Librarians<br>
 ```
 
 ### ショートカットリンク
-- Documents
-  - [成果物](./Documents/図書管理システム/成果物)
+
