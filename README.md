@@ -1,10 +1,10 @@
 # Librarians
 
 ## チーム概要
-[./team_overview.md](./team_overview.md)
+[Librarians/Code/team_overview.md](./team_overview.md)
 
 ## Project管理
-[GitHub/Project](https://github.com/charlie24403/Librarians/projects/2)
+[Librarians/Project](https://github.com/charlie24403/Librarians/projects/2)
 ### Task管理ルール
 #### Column説明
 - Main Task
