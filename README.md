@@ -1,9 +1,50 @@
 # Librarians
 
 ## チーム概要
-[./team_overview.md](./team_overview.md)
+[Librarians/Code/team_overview.md](./team_overview.md)
 
-### リポジトリ構成
+## Project管理
+[Librarians/Project](https://github.com/charlie24403/Librarians/projects/2)
+### Task管理ルール
+#### Column説明
+- Main Task
+    - すべてのタスクの親となるタスク
+- Sub task
+    - メインタスクを細分化したタスク
+- Fix task
+    - 開発を進めていくうえで発生した修正
+- In progress
+    - 現在進行中のタスク
+- Check
+    - タスクが完了し確認待ちのタスク
+- Done
+    - 確認が終わり完了したタスク
+#### task記述形式
+```
+[<タスクの種類>] <メインタスク>/<サブタスク>
+・<詳細>
+```
+#### Taskを行うの流れ
+- オーナー
+```
+・着手するメインタスクを"In Progress"に移動
+↓ すべてのサブタスクが完了
+・メインタスクを"Check"に移動
+↓ 先生確認
+・メインタスクを"Done"に移動
+```
+- メンバ
+```
+・"Sub task"内にサブタスクの作成（メインタスクを細分化）
+↓
+・着手するサブタスクを"In progress"に移動
+↓ 完了
+・サブタスクを"Check"に移動
+↓ 全体で確認
+・サブタスクを"Done"に移動
+```
+
+## リポジトリ構成
 ```
 └─Librarians
     └─Documents
