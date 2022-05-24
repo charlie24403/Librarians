@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/documents/menu', [DocumentController::class, 'menu']);
 Route::resource('documents', DocumentController::class);

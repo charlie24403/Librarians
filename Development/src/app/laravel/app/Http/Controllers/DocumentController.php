@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class DocumentController extends Controller
 {
+    public function menu()
+    {
+        return view('documents/menu');
+    }
+
     /**
      * Display a listing of the resource.
      *
