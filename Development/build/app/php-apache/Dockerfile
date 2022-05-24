@@ -17,6 +17,7 @@ RUN ln -sf /usr/share/zoneinfo/Japan /etc/localtime
 
 # copy apache config file
 COPY ./build/app/php-apache/apache/default.conf /etc/apache2/sites-enabled/000-default.conf
+RUN  a2enmod rewrite
 
 # install laravel dependent packages
 RUN apt update && \
