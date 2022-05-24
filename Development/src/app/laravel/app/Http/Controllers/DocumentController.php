@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Document;
 use App\Models\Category;
 
 class DocumentController extends Controller
@@ -12,6 +13,12 @@ class DocumentController extends Controller
         return view('documents/menu');
     }
 
+    public function search()
+    {
+        $categories = Category::all();
+        return view('documents/search', ['categories' => $categories]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,12 +26,31 @@ class DocumentController extends Controller
      */
     public function index(Request $request)
     {
-        // カテゴリ一覧を取得
-        $categories = Category::all();
+        $query = Document::with('category');
+        if ($request->isbn) {
+        $query->where('isbn', $request->isbn);
+        }
+        if ($request->title) {
+            $query->where('title', 'LIKE', '%'. $request->title. '%');
+            }
+        if ($request->category_id) {
+        $query->where('category_id', $request->category_id);
+        }
+        if ($request->author) {
+        $query->where('author', 'LIKE', '%'. $request->author. '%');
+        }
+        if ($request->publisher) {
+            $query->where('publisher', 'LIKE', '%'. $request->publisher. '%');
+        }
+        if ($request->published) {
+            $query->where('published', $request->published);
+        }
+        // 商品検索結果を取得
+        $documents = $query->orderBy('isbn')->paginate(10);
+        // dd($documents);
         // ビューを返す
-        return view('documents/index', ['categories' => $categories]);
+        return view('documents/index', ['documents' => $documents]);
     }
-
     /**
      * Show the form for creating a new resource.
      *

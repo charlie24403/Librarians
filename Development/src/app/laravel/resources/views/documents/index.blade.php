@@ -2,13 +2,12 @@
 <html>
     <head>
     <meta charset="utf-8">
-    <title>商品検索</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <title>資料検索-結果</title>
+    <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
     <body>
-        <form action="" method="get">
-        @include('documents/common/search')
-        <button type="submit">検索</button>
-        <button type=“button” onclick="location.href={{ route('index') }}">キャンセル</button>
-        </form>
+        <a href="{{ route('documents.search') }}">
+            <button type="button">再検索</button>
+        </a>
+        @include('documents/common/datalist')
     </body>
 </html>
