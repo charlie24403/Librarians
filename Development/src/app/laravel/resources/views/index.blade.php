@@ -10,7 +10,7 @@
     <a href="">topに戻る</a>
     <h1>予約メニュー</h1>
     <a href="">新規予約登録</a> <!--createか何か-->
-    <a href="" >検索</a>
+    <a href="}}" >検索</a>
 
     <p>予約ID</p>
     {{ $reservations -> id }}

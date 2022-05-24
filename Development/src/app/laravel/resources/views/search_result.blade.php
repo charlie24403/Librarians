@@ -11,7 +11,10 @@
     <a href="">予約メニュー画面に戻る</a>
     <h1>入力フォーム</h1>
     
-    <form action=""></form>
+    <form action="" method="post">
+        <input type="text" name ="user_id">
+        <input type="text" name ="isbn">
+    </form>
 
 
 </body>
