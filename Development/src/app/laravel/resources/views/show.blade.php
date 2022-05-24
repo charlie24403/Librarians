@@ -28,7 +28,7 @@
 {{ $reservations -> created_at }}
 
 <hr>
-<input type="submit" value ="変更">
+<button type="button">変更</button>
 <form action="" method ="POST">
     @csrf
     <!--もしpost送信以外ならあっと以下で指定-->
