@@ -8,32 +8,44 @@
 </head>
 <body>
 <a href="">Topに戻る</a>
-<a href="">予約メニュー画面に戻る</a>
+<a href="{{ route('reservations.index') }}">予約メニュー画面に戻る</a>
 <h1>予約詳細画面</h1>
 <a href="">検索結果画面に戻る</a>
 
 <p>予約ID</p>
-{{ $reservations -> id }}
+{{ $reservations->id }}
 <p>会員ID</p>
-{{ $reservations -> user_id }}
+{{ $reservations->user_id }}
 <p>会員名</p>
 <!--ユーザーのFKでユーザー名をひいてくる-->
 <p>書籍名</p>
 <!--ドキュメントのFKで書籍名をひいてくる-->
 <p>ISBN番号</p>
-{{ $reservations -> isbn }} <!--リンク化するかどうか-->
+{{ $reservations->isbn }} <!--リンク化するかどうか-->
 <p>確保済み資料</p>
-{{ $reservations -> document_id }}
+{{ $reservations->document_id }}
 <p>予約年月日</p>
-{{ $reservations -> created_at }}
+{{ $reservations->created_at }}
 
 <hr>
 <button type="button">変更</button>
-<form action="" method ="POST">
+
+<a href="#" onclick="deleteReservation()">削除</a>
+<form action="{{  route('reservations.destroy', $reservations) }}" method ="post"
+    id ="delete-form">
     @csrf
-    <!--もしpost送信以外ならあっと以下で指定-->
-    <input type="submit" value ="削除">
+    @method('delete')
 </form>
+
+<script type="text/javascrpt">
+function deleteReservation()
+{
+    event.preventDefault();
+    if (window.confirm('削除しますか？')){
+        document.getElementById('delete-form').submit();
+    }
+}
+</script>
 
 </body>
 </html>

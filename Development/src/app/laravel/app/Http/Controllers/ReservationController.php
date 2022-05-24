@@ -45,10 +45,10 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Reservation $reservations)
+    public function show($id)
     {
-        $reservations = \App\Models\Reservation::all();
-        return view('show.blade.php', ['reservations' => $reservations]);
+        $reservations = \App\Models\Reservation::find($id);
+        return view('show', ['reservations' => $reservations]);
     }
 
     /**
@@ -80,9 +80,9 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Reservation $reservations)
     {
-        // $reservations->delete();
-        // return redirect(route('index'));
+        $reservations->delete();
+        return redirect(route('reservations.index')); //indexじゃなくて→検索結果一覧？仮でおいてます
     }
 }
