@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class DocumentController extends Controller
 {
@@ -16,9 +17,12 @@ class DocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('documents/index');
+        // カテゴリ一覧を取得
+        $categories = Category::all();
+        // ビューを返す
+        return view('documents/index', ['categories' => $categories]);
     }
 
     /**
