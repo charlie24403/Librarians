@@ -14,7 +14,7 @@
 
     @foreach($reservations as $reserv)
     <p>
-        <a href="{{ route('reservations.show' ,$reserv->id) }}">{{ $reserv->id }}</a>
+        <a href="{{ route('reservations.show', $reserv->id) }}">{{ $reserv->id }}</a>
     </p>
     @endforeach
 

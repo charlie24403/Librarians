@@ -80,8 +80,9 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reservation $reservations)
+    public function destroy($id)
     {
+        $reservations = \App\Models\Reservation::find($id);
         $reservations->delete();
         return redirect(route('reservations.index')); //indexじゃなくて→検索結果一覧？仮でおいてます
     }

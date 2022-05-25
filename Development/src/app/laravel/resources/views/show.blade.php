@@ -21,7 +21,7 @@
 <p>書籍名</p>
 <!--ドキュメントのFKで書籍名をひいてくる-->
 <p>ISBN番号</p>
-{{ $reservations->isbn }} <!--リンク化するかどうか-->
+{{ $reservations->isbn }}
 <p>確保済み資料</p>
 {{ $reservations->document_id }}
 <p>予約年月日</p>
@@ -37,7 +37,7 @@
     @method('delete')
 </form>
 
-<script type="text/javascrpt">
+<script type="text/javascript">
 function deleteReservation()
 {
     event.preventDefault();
