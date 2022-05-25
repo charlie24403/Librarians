@@ -22,6 +22,7 @@ Route::get('/', function () {
 Route::get('/documents-menu', [DocumentController::class, 'menu'])->name('documents.menu');
 
 Route::get('/documents-menu/documents/search', [DocumentController::class, 'search'])->name('documents.search');
+Route::post('/documents-menu/documents/confirm', [DocumentController::class, 'confirm'])->name('documents.confirm');
 Route::resource('/documents-menu/documents', DocumentController::class);
 
 // Route::get('/menu/stocks', [StockController::class, 'menu'])->name('stocks.menu');

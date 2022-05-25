@@ -15,9 +15,9 @@
     <dt>分類コード</dt>
     <dd>
         <select name="category_id">
-        <option value="">未選択</option>
+        <option value="">すべて</option>
         @foreach ($categories as $category)
-            <option value="{{ $category->id }}">
+            <option value="{{ $category->id }}" {{ $category->id == old('category') ? 'selected' : ''}}>
                 {{ $category->name }}
             </option>
         @endforeach

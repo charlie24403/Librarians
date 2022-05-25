@@ -11,7 +11,7 @@
 <!-- content -->
 @section('content')
     <form action="{{ route('documents.index') }}" method="get">
-        @include('/commons/search')
+        @include('/documents/commons/search')
         <button type="submit">検索</button>
         <a href="{{ route('documents.search') }}">
             <button type="button">キャンセル</button>
