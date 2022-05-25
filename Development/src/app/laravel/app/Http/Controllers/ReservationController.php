@@ -7,15 +7,30 @@ use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
+    public function menu()
+    {
+        $reservations = \App\Models\Reservation::all();
+        return view('reservations.menu', ['reservations' => $reservations]);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+    public function index(Request $request)
     {
-        $reservations = \App\Models\Reservation::all();
-        return view('index', ['reservations' => $reservations]);
+        $query = Reservation::query();
+        if ($request->isbn) {
+        $query->where('isbn', $request->isbn);
+        }
+        if ($request->user_id) {
+            $query->where('user_id', $request->user_id);
+        }
+        
+        $reservations = Reservation::paginate(10);
+        return view('reservations.index', ['reservations' => $reservations]);
     }
 
     /**
@@ -48,7 +63,7 @@ class ReservationController extends Controller
     public function show($id)
     {
         $reservations = \App\Models\Reservation::find($id);
-        return view('show', ['reservations' => $reservations]);
+        return view('reservations.show', ['reservations' => $reservations]);
     }
 
     /**
@@ -84,6 +99,13 @@ class ReservationController extends Controller
     {
         $reservations = \App\Models\Reservation::find($id);
         $reservations->delete();
-        return redirect(route('reservations.index')); //indexじゃなくて→検索結果一覧？仮でおいてます
+        return redirect(route('reservations.menu')); 
     }
+    
+    public function search()
+    {
+        $reservations = \App\Models\Reservation::all();
+        return view('reservations.search', ['reservations' => $reservations]);
+    }
+
 }
