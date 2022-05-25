@@ -11,7 +11,7 @@
         <h1>トップ画面</h1>
         <!--会員管理-->
         <p>
-            <a href="{{ route('users.index') }}">会員管理</a>
+            <a href="{{ route('users.menu') }}">会員管理</a>
         </p>
 
         <!--資料管理-->

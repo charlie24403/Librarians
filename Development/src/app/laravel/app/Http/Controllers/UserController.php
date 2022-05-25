@@ -24,9 +24,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+     public function menu()
     {
-        return view('mm_menu');
+        return view('users.mm_menu');
     }
 
     /**

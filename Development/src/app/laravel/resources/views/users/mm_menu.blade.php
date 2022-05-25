@@ -16,7 +16,7 @@
                         <a href="{{ route('home') }}">トップページ</a>
                     </li>
                     <!--<li>
-                        <a href="{{ route('users.index') }}">会員管理メニュー</a>
+                        <a href="{{ route('users.menu') }}">会員管理メニュー</a>
                     </li> -->
                 </ul>
             </div>

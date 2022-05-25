@@ -22,31 +22,29 @@ use App\Http\Controllers\HomeController;
     return view('welcome');
 });*/
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 /*会員メニュー*/
-Route::get('users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users', [UserController::class, 'menu'])->name('users.menu');
 
 /*新規会員登録画面の遷移先*/
-Route::post('users/create', [UserController::class, 'post'])->name('users.post');
+Route::post('/users/create', [UserController::class, 'post'])->name('users.post');
 
 
 /*新規会員登録作成画面の表示*/
-Route::get('users/create', [UserController::class, 'create'])->name('users.create');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
 
 /*確認画面の表示*/
-Route::get('/create/confirm', [UserController::class, 'confirm'])->name("users.confirm");
+Route::get('/users/create/confirm', [UserController::class, 'confirm'])->name("users.confirm");
 
 /*確認画面からフォーム遷移先*/
-Route::post('/create/confirm', [UserController::class, 'send'])->name('users.send');
-
-
+Route::post('/users/create/confirm', [UserController::class, 'send'])->name('users.send');
 
 /*完了（登録）アクション*/
-Route::get('/create/thanks', [UserController::class, 'complete'])->name("users.complete");
+Route::get('/users/create/confirm/thanks', [UserController::class, 'complete'])->name("users.complete");
 
-/*新規会員登録アクション*/
-Route::post('users', [UserController::class, 'store'])->name('users.store');
+/*会員情報一覧*/
+Route::get('/users/create/confirm/thanks', [UserController::class, 'complete'])->name("users.complete");
 
 /*会員検索
 Route::get('/', [UserController::class, 'index']);
