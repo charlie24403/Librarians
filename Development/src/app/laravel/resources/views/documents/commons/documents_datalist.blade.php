@@ -20,6 +20,9 @@
             <td>{{ $document->author }}</td>
             <td>{{ $document->publisher }}</td>
             <td>{{ $document->published }}</td>
+            <td>
+                <a href="{{ route('documents.show', $document->id) }}"><button type="button">詳細</button></a>
+            </td>
             </tr>
         @endforeach
     </tbody>

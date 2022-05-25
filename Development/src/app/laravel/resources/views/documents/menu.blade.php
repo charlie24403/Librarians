@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
     </head>
     <body>
-        <h1>@yield('title')</h1>
+        @include('/commons/header')
         <section>
             <a href="{{ route('documents.create') }}">
                 <button type="button">新規登録</button>

@@ -12,12 +12,12 @@
         <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
     </head>
     <body>
-        <h1>@yield('title')</h1>
+        @include('/commons/header')
         <section>
-            <a href="{{ route('documents.create') }}">
+            <a href="{{ route('stocks.create') }}">
                 <button type="button">新規登録</button>
             </a>
-            <a href="{{ route('documents.search') }}">
+            <a href="{{ route('stocks.search') }}">
                 <button type="button">検索</button>
             </a>
         </section>

@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/menu/documents', [DocumentController::class, 'menu'])->name('documents.menu');
-Route::get('/menu/stocks', [DocumentController::class, 'menu'])->name('stocks.menu');
+Route::get('/menu/stocks', [StockController::class, 'menu'])->name('stocks.menu');
 
 Route::get('/documents/search', [DocumentController::class, 'search'])->name('documents.search');;
 Route::resource('documents', DocumentController::class);
