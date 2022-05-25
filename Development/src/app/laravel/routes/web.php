@@ -19,11 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/menu/documents', [DocumentController::class, 'menu'])->name('documents.menu');
-Route::get('/menu/stocks', [StockController::class, 'menu'])->name('stocks.menu');
+Route::get('/documents-menu', [DocumentController::class, 'menu'])->name('documents.menu');
 
-Route::get('/documents/search', [DocumentController::class, 'search'])->name('documents.search');;
-Route::resource('documents', DocumentController::class);
+Route::get('/documents-menu/documents/search', [DocumentController::class, 'search'])->name('documents.search');
+Route::resource('/documents-menu/documents', DocumentController::class);
 
-Route::get('/stocks/search', [StockController::class, 'search'])->name('stocks.search');;
-Route::resource('stocks', StockController::class);
+// Route::get('/menu/stocks', [StockController::class, 'menu'])->name('stocks.menu');
+// Route::get('/stocks/search', [StockController::class, 'search'])->name('stocks.search');;
+// Route::resource('stocks', StockController::class);
