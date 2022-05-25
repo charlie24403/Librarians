@@ -1,7 +1,7 @@
 <table border="1">
     <thead>
         <tr>
-        <th>ID</th>
+        <th>資料ID</th>
         <th>ISBN番号</th>
         <th>資料名</th>
         <th>分類コード</th>

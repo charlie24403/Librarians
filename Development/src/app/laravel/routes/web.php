@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\StockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/documents/menu', [DocumentController::class, 'menu'])->name('documents.menu');
+Route::get('/menu/documents', [DocumentController::class, 'menu'])->name('documents.menu');
+Route::get('/menu/stocks', [DocumentController::class, 'menu'])->name('stocks.menu');
+
 Route::get('/documents/search', [DocumentController::class, 'search'])->name('documents.search');;
 Route::resource('documents', DocumentController::class);
+
+Route::get('/stocks/search', [StockController::class, 'search'])->name('stocks.search');;
+Route::resource('stocks', StockController::class);

@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Document;
+use App\Models\Stock;
 use App\Models\Category;
 
-class DocumentController extends Controller
+class StockController extends Controller
 {
     public function menu()
     {
-        return view('documents/menu');
+        return view('stocks/menu');
     }
 
     public function search()
     {
         $categories = Category::all();
-        return view('documents/search', ['categories' => $categories]);
+        return view('stocks/search', ['categories' => $categories]);
     }
 
     /**
@@ -26,7 +26,7 @@ class DocumentController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Document::with('category');
+        $query = Stock::with('document');
         if ($request->isbn) {
         $query->where('isbn', $request->isbn);
         }
@@ -45,10 +45,11 @@ class DocumentController extends Controller
         if ($request->published) {
             $query->where('published', $request->published);
         }
-        $documents = $query->orderBy('isbn')->paginate(10);
+        $stocks = $query->orderBy('isbn')->paginate(10);
 
-        return view('documents/index', ['documents' => $documents]);
+        return view('stocks/index', ['stocks' => $stocks]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -78,7 +79,7 @@ class DocumentController extends Controller
      */
     public function show($id)
     {
-        return view('documents/show');
+        //
     }
 
     /**
@@ -89,7 +90,7 @@ class DocumentController extends Controller
      */
     public function edit($id)
     {
-        return view('documents/edit');
+        //
     }
 
     /**
