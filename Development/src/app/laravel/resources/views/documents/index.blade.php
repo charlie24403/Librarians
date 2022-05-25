@@ -10,8 +10,6 @@
 
 <!-- content -->
 @section('content')
-    <a href="{{ route('documents.search') }}">
-        <button type="button">再検索</button>
-    </a>
+    <button type="button" onclick="history.back()">再検索</button>
     @include('/documents/commons/documents_datalist')
 @endsection
