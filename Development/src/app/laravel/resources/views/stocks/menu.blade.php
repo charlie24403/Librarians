@@ -1,1 +1,25 @@
-menu_stocks
+@section('title', '在庫管理メニュー')
+
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        @hasSection('title')
+            <title>@yield('title') | {{ config('app.name') }}</title>
+        @else
+            <title>{{ config('app.name') }}</title>
+        @endif
+        <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
+    </head>
+    <body>
+        <h1>@yield('title')</h1>
+        <section>
+            <a href="{{ route('documents.create') }}">
+                <button type="button">新規登録</button>
+            </a>
+            <a href="{{ route('documents.search') }}">
+                <button type="button">検索</button>
+            </a>
+        </section>
+    </body>
+</html>
