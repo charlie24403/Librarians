@@ -18,6 +18,23 @@
         </dl>
     <p><a href="{{ route('users.edit', $user->id) }}">変更</a></p>
     
-    <p>削除</p>
-    <a href="{{ route('users.index')}}">検索結果一覧に戻る</a>
+    <a href="#" onclick="deleteuser()">削除</a>
+    <form action="{{  route('users.destroy', $user) }}" method ="post"
+    id ="delete-form">
+    @csrf
+    @method('delete')
+    </form>
+
+    <script type="text/javascript">
+    function deleteuser()
+    {
+        event.preventDefault();
+        if (window.confirm('削除しますか？')){
+            document.getElementById('delete-form').submit();
+        }
+    }
+    </script>
+    
+
+    <a href="{{ route('users.index')}}">会員一覧に戻る</a>
 @endsection

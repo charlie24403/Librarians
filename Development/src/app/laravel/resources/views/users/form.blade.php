@@ -1,5 +1,11 @@
-@extends('layouts.app')
+<!-- env -->
+@section('page_title', '新規会員登録')
+<?php
+    $IS_MENU = FALSE;
+    $CATEGORY = 'member';
+?>
 
+@extends('layouts.app')
 
 @section('content')
 @include('commons/flash')

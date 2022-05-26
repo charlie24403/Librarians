@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers;
 use App\Models\User;
@@ -111,13 +112,34 @@ class UserController extends Controller
 	}
 
     public function search(){
-        return view('');
+        $user = User::all();
+        return view('users.search', ['user' => $user]);
     }
 
 
-    public function index(){
-        $users = User::orderBy('created_at', 'desc')->paginate(10);
-        return view('users.index', ['users' => $users]);
+    public function index(Request $request){
+        
+        $query = User::orderBy('created_at');
+        if ($request->name) {
+            $query->where('name', 'LIKE', '%'. $request->name. '%');
+            }
+        if ($request->address) {
+        $query->where('address', $request->address);
+        }
+        if ($request->tel) {
+        $query->where('tel', 'LIKE', '%'. $request->tel. '%');
+        }
+        if ($request->mail) {
+            $query->where('mail', 'LIKE', '%'. $request->mail. '%');
+        }
+        if ($request->birth) {
+            $query->where('birth', $request->birth);
+        }
+        $users = $query->paginate(10);
+        return view('users/index', ['users' => $users]);
+
+        /*$users = User::orderBy('created_at', 'desc')->paginate(10);
+        return view('users.index', ['users' => $users]);*/
     }
 
     /**
@@ -168,6 +190,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reservations = \App\Models\User::find($id);
+        $reservations->delete();
+        return redirect(route('users.index'));
     }
 }

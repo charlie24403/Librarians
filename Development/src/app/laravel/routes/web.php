@@ -39,8 +39,8 @@ Route::get('/users/create/confirm/thanks', [UserController::class, 'complete'])-
 |--------------------------------------------------------------------------
 */
 
-/*会員検索画面
-Route::get('', [UserController::class, 'search'])->name("users.search");
+/*会員検索画面への遷移*/
+Route::get('/users/search', [UserController::class, 'search'])->name('users.search');
 
 /*会員情報一覧画面への遷移*/
 Route::get('/users/search/index', [UserController::class, 'index'])->name("users.index");
@@ -54,23 +54,19 @@ Route::get('/users/search/index/{id}', [UserController::class, 'show'])->name('u
 |--------------------------------------------------------------------------
 */
 
-/*会員情報更新画面の遷移先
-Route::post('/users/search/index/show/update', [UserController::class, 'update_post'])->name('users.update-post');
-
 /*会員情報更新の作成画面の表示*/
 Route::get('/users/search/index/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-
-/*確認画面の表示
-Route::get('/users/search/index/show/update/confirm', [UserController::class, 'update_confirm'])->name("users.update-confirm");
-
-/*確認画面からフォーム遷移先
-Route::post('/users/search/index/show/update/confirm', [UserController::class, 'update_send'])->name('users.update-send');
 
 /*変更アクション*/
 Route::patch('/users/search/index/{id}/edit/update/', [UserController::class, 'update'])->name("users.update");
 
-/*退会
-Route::delete('/', [UserController::class, 'destroy'])->name('users.destroy');;
+/*
+|--------------------------------------------------------------------------
+| ココから会員情報削除
+|--------------------------------------------------------------------------
+*/
+/*退会*/
+Route::delete('/users/search/index/{id}', [UserController::class, 'destroy'])->name('users.destroy');;
 
 /*
 Route::resource('users', UserController::class);*/
