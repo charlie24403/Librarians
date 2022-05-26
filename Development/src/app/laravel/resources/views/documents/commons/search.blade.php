@@ -15,12 +15,12 @@
     <dt>分類コード</dt>
     <dd>
         <select name="category_id">
-        <option value="">すべて</option>
         @foreach ($categories as $category)
             <option value="{{ $category->id }}" {{ $category->id == old('category') ? 'selected' : ''}}>
                 {{ $category->name }}
             </option>
         @endforeach
+        <option value="" selected>未選択</option>
         </select>
     </dd>
 
