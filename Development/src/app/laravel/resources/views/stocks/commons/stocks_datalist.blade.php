@@ -15,7 +15,7 @@
                 <td>{{ $stock->created_at }}</td>
                 <td>{{ $stock->disposal }}</td>
                 <td>
-                    <a href="{{ route('stocks.show', $stocks->id) }}"><button type="button">詳細</button></a>
+                    <a href="{{ route('stocks.show', $stock->id) }}"><button type="button">詳細</button></a>
                 </td>
             </tr>
         @endforeach

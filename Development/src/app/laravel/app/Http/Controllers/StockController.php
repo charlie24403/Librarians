@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Stock;
+use App\Models\Document;
 use App\Models\Category;
 
 class StockController extends Controller
@@ -26,26 +27,41 @@ class StockController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Document::with('category');
-        if ($request->isbn) {
-        $query->where('isbn', $request->isbn);
+        $documents_query = Document::with('category');
+        if ($request->isbn)
+        {
+        $documents_query->where('isbn', $request->isbn);
         }
-        if ($request->title) {
-            $query->where('title', 'LIKE', '%'. $request->title. '%');
-            }
-        if ($request->category_id) {
-        $query->where('category_id', $request->category_id);
+        if ($request->title)
+        {
+            $documents_query->where('title', 'LIKE', '%'. $request->title. '%');
         }
-        if ($request->author) {
-        $query->where('author', 'LIKE', '%'. $request->author. '%');
+        if ($request->category_id)
+        {
+        $documents_query->where('category_id', $request->category_id);
         }
-        if ($request->publisher) {
-            $query->where('publisher', 'LIKE', '%'. $request->publisher. '%');
+        if ($request->author)
+        {
+        $documents_query->where('author', 'LIKE', '%'. $request->author. '%');
         }
-        if ($request->published) {
-            $query->where('published', $request->published);
+        if ($request->publisher)
+        {
+            $documents_query->where('publisher', 'LIKE', '%'. $request->publisher. '%');
         }
-        $stocks = $query->paginate(10);
+        if ($request->published)
+        {
+            $documents_query->where('published', $request->published);
+        }
+        $documents = $documents_query->orderBy('isbn')->get();
+
+        $stocks_query = Stock::orderBy('document_id');
+        foreach ($documents as $document)
+        {
+            var_dump($document['id']); # test-code
+
+            $stocks_query->orWhere('document_id', $document['id']);
+        }
+        $stocks = $stocks_query->paginate(10);
 
         return view('stocks/index', ['stocks' => $stocks]);
     }

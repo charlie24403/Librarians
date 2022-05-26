@@ -1,5 +1,5 @@
 <!-- env -->
-@section('page_title', '資料検索')
+@section('page_title', '在庫検索')
 <?php
     $IS_MENU = FALSE;
     $CATEGORY = 'documents';
