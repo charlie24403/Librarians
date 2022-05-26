@@ -12,7 +12,7 @@
 
     <dt>分類コード</dt>
     <dd>
-        {{ $document->category_id }}
+        {{ $categories[$document->category_id]->name }}
     </dd>
 
     <dt>著者名</dt>

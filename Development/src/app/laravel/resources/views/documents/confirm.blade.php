@@ -10,7 +10,12 @@
 
 <!-- content -->
 @section('content')
-    <form action="{{ route('documents.store') }}" method="post">
+    @if($confirm_type == "edit")
+        <form action="{{ route("documents.update", $document_id) }}" method="post">
+            @method('patch')
+    @elseif($confirm_type == 'create')
+        <form action="{{ route("documents.store") }}" method="post">
+    @endif
         @include('documents/commons/array_detail')
         <button type="submit">確認</button>
         <button type="button" onclick="history.back()">戻る</button>

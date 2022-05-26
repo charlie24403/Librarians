@@ -25,6 +25,9 @@ Route::get('/documents-menu/documents/search', [DocumentController::class, 'sear
 Route::post('/documents-menu/documents/confirm', [DocumentController::class, 'confirm'])->name('documents.confirm');
 Route::resource('/documents-menu/documents', DocumentController::class);
 
-// Route::get('/menu/stocks', [StockController::class, 'menu'])->name('stocks.menu');
-// Route::get('/stocks/search', [StockController::class, 'search'])->name('stocks.search');;
-// Route::resource('stocks', StockController::class);
+
+Route::get('/stocks-menu', [StockController::class, 'menu'])->name('stocks.menu');
+
+Route::get('/stocks-menu/stocks/search', [StockController::class, 'search'])->name('stocks.search');
+Route::post('/stocks-menu/stocks/confirm', [StockController::class, 'confirm'])->name('stocks.confirm');
+Route::resource('/stocks-menu/stocks', StockController::class);

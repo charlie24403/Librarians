@@ -72,6 +72,8 @@ class DocumentController extends Controller
         $categories = Category::all();
 
         $created = $request->session()->get("created");
+        $request->session()->forget("created");
+
         if($created){
             return view('documents/create', ['categories' => $categories, 'created' => $created]);
         }else{
@@ -83,18 +85,31 @@ class DocumentController extends Controller
     {
         $categories = Category::all();
 
+        $confirm_type = $request->confirm_type;
         $form_data = $request->only($this->formItems);
 
         $validator = Validator::make($form_data, $this->validator);
 		if($validator->fails()){
-			return redirect(route('documents.create'))
+            if ($confirm_type == "edit") {
+                return redirect(route("documents.edit"))
 				->withInput()
 				->withErrors($validator);
+            }elseif ($confirm_type == 'create') {
+                return redirect(route("documents.create"))
+				->withInput()
+				->withErrors($validator);
+            }
 		}
 
 		$request->session()->put("form_data", $form_data);
 
-        return view('documents/confirm', ['categories' => $categories, 'form_data' => $form_data]);
+        if ($confirm_type == "edit") {
+            $document_id = $request->document_id;
+
+            return view('documents/confirm', ['categories' => $categories, 'confirm_type' => $confirm_type, 'document_id' => $document_id,  'form_data' => $form_data]);
+        }elseif ($confirm_type == 'create') {
+            return view('documents/confirm', ['categories' => $categories, 'confirm_type' => $confirm_type, 'form_data' => $form_data]);
+        }
     }
 
     /**
@@ -130,10 +145,20 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        $document = \App\Models\Document::find($id);
-        return view('documents.show', ['document' => $document]);
+        $categories = Category::all();
+
+        $document = Document::find($id);
+
+        $edited = $request->session()->get("edited");
+        $request->session()->forget("edited");
+
+        if($edited){
+            return view('documents.show', ['categories' => $categories, 'document' => $document, 'edited' => $edited]);
+        }else{
+            return view('documents.show', ['categories' => $categories, 'document' => $document]);
+        }
     }
 
     /**
@@ -142,9 +167,12 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        return view('documents/edit');
+        $categories = Category::all();
+
+        $document = Document::find($id);
+        return view('documents.edit', ['categories' => $categories, 'document' => $document]);
     }
 
     /**
@@ -156,7 +184,23 @@ class DocumentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $form_data = $request->session()->get("form_data");
+		if(!$form_data){
+			return redirect( route('documents.edit') );
+		}
+
+        Document::where('id','=',$id)->update([
+            'isbn' => $form_data["isbn"],
+            'title' => $form_data["title"],
+            'category_id' => $form_data["category_id"],
+            'author' => $form_data["author"],
+            'publisher' => $form_data["publisher"],
+            'published' => $form_data["published"]
+        ]);
+
+		$request->session()->forget("form_data");
+
+		return redirect( route('documents.show', $id) )->with('edited', TRUE);;
     }
 
     /**

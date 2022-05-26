@@ -9,18 +9,32 @@
 
 <!-- content -->
 @section('content')
+    @if(isset($edited))
+        <a href="{{ route('documents.search')}}">
+            <button type="button">検索に戻る</button>
+        </a>
+    @else
+        <button type="button" onclick="history.back()">戻る</button>
+    @endif
+
     @include('documents/commons/object_detail')
-    <a href="">
+    <a href="{{ route('documents.edit', $document->id) }}">
         <button type="button">編集</button>
     </a>
-    <a href="">
-        <button type="button" onclick="deleteReservation()">削除</button>
-    </a>
+    <button type="button" onclick="deleteReservation()">削除</button>
 
     <form action="{{ route('documents.destroy', $document) }}" method ="post" id ="delete-form">
         @csrf
         @method('delete')
     </form>
+
+
+    <?php
+        if (isset($edited)) {
+            echo '<script type="text/javascript">alert("編集が完了しました");</script> ';
+        }
+    ?>
+
     <script type="text/javascript">
         function deleteReservation()
         {
