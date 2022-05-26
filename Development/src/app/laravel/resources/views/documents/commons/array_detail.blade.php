@@ -12,7 +12,7 @@
 
     <dt>分類コード</dt>
     <dd>
-        {{ $form_data["category_id"] }}
+        {{ $categories[$form_data["category_id"]]->name }}
     </dd>
 
     <dt>著者名</dt>

@@ -71,7 +71,6 @@ class DocumentController extends Controller
     {
         $categories = Category::all();
 
-
         $created = $request->session()->get("created");
         if($created){
             return view('documents/create', ['categories' => $categories, 'created' => $created]);
@@ -82,6 +81,8 @@ class DocumentController extends Controller
 
     public function confirm(Request $request)
     {
+        $categories = Category::all();
+
         $form_data = $request->only($this->formItems);
 
         $validator = Validator::make($form_data, $this->validator);
@@ -93,7 +94,7 @@ class DocumentController extends Controller
 
 		$request->session()->put("form_data", $form_data);
 
-        return view('documents/confirm', ['form_data' => $form_data]);
+        return view('documents/confirm', ['categories' => $categories, 'form_data' => $form_data]);
     }
 
     /**
