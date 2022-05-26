@@ -15,7 +15,8 @@ class StockController extends Controller
 
     public function search()
     {
-
+        $categories = Category::all();
+        return view('stocks/search', ['categories' => $categories]);
     }
 
     /**
@@ -25,7 +26,28 @@ class StockController extends Controller
      */
     public function index(Request $request)
     {
+        $query = Document::with('category');
+        if ($request->isbn) {
+        $query->where('isbn', $request->isbn);
+        }
+        if ($request->title) {
+            $query->where('title', 'LIKE', '%'. $request->title. '%');
+            }
+        if ($request->category_id) {
+        $query->where('category_id', $request->category_id);
+        }
+        if ($request->author) {
+        $query->where('author', 'LIKE', '%'. $request->author. '%');
+        }
+        if ($request->publisher) {
+            $query->where('publisher', 'LIKE', '%'. $request->publisher. '%');
+        }
+        if ($request->published) {
+            $query->where('published', $request->published);
+        }
+        $stocks = $query->paginate(10);
 
+        return view('stocks/index', ['stocks' => $stocks]);
     }
 
     /**
