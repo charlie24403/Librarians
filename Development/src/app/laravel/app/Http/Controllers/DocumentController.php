@@ -14,8 +14,10 @@ class DocumentController extends Controller
 	private $validator = [
 		"isbn" => "required|string|between:10,13",
 		"title" => "required|string|max:20",
+        "category_id" => "required",
 		"author" => "required|string|max:20",
         "publisher" => "required|string|max:20",
+        "published" => "required"
 	];
 
 
@@ -65,10 +67,17 @@ class DocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $categories = Category::all();
-        return view('documents/create', ['categories' => $categories]);
+
+
+        $created = $request->session()->get("created");
+        if($created){
+            return view('documents/create', ['categories' => $categories, 'created' => $created]);
+        }else{
+            return view('documents/create', ['categories' => $categories]);
+        }
     }
 
     public function confirm(Request $request)
@@ -111,7 +120,7 @@ class DocumentController extends Controller
 
 		$request->session()->forget("form_data");
 
-		return redirect( route('documents.create') );
+		return redirect( route('documents.create') )->with('created', TRUE);;
     }
 
     /**
