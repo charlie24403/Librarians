@@ -25,7 +25,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-     public function menu()
+
+    public function menu()
     {
         return view('users.mm_menu');
     }
@@ -93,18 +94,6 @@ class UserController extends Controller
         $user->birth = $input["birth"];
         $user->save();
         
-        //$name = $request->input('name');
-        //$address = $request->input('address');
-        //$tel = $request->input('tel');
-        //$mail = $request->input('mail');
-        //$birth = $request->input('birth');
-        //User::insert([
-            //"name" => $name, 
-            //"address" => $address, 
-            //"tel" => $tel, 
-            //"mail" => $mail, 
-            //"birth" => $birth, 
-        //]);//
 		
 		//セッションに値が無い時はフォームに戻る
 		if(!$input){
@@ -121,15 +110,14 @@ class UserController extends Controller
 		return view("users.form_complete");
 	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        
+    public function search(){
+        return view('');
+    }
+
+
+    public function index(){
+        $users = User::orderBy('created_at', 'desc')->paginate(10);
+        return view('users.index', ['users' => $users]);
     }
 
     /**
@@ -138,20 +126,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('users.show', ['user' => $user]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('users.edit', ['user' => $user]);
     }
 
     /**
@@ -161,11 +145,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, User $user, Request $request)
     {
-        //
+        User::where('id','=',$id)->update([
+            'name' => $request->name,
+            'address' => $request->address,
+            'tel' => $request->tel,
+            'mail' => $request->mail,
+            'birth' => $request->birth,
+        ]);
+        $user = User::find($id);
+        
+        return view("users.update_complete", ['user' => $user]);
     }
 
+    
     /**
      * Remove the specified resource from storage.
      *

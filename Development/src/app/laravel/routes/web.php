@@ -8,19 +8,9 @@ use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| ココから会員登録
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
-
-
-/*Route::get('/', function(){
-    return view('welcome');
-});*/
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
@@ -29,7 +19,6 @@ Route::get('/users', [UserController::class, 'menu'])->name('users.menu');
 
 /*新規会員登録画面の遷移先*/
 Route::post('/users/create', [UserController::class, 'post'])->name('users.post');
-
 
 /*新規会員登録作成画面の表示*/
 Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
@@ -43,17 +32,42 @@ Route::post('/users/create/confirm', [UserController::class, 'send'])->name('use
 /*完了（登録）アクション*/
 Route::get('/users/create/confirm/thanks', [UserController::class, 'complete'])->name("users.complete");
 
-/*会員情報一覧*/
-Route::get('/users/create/confirm/thanks', [UserController::class, 'complete'])->name("users.complete");
 
-/*会員検索
-Route::get('/', [UserController::class, 'index']);
+/*
+|--------------------------------------------------------------------------
+| ココから会員検索
+|--------------------------------------------------------------------------
+*/
 
-/*会員詳細
-Route::get('users/create', [UserController::class, 'show'])->name('users.show');;
+/*会員検索画面
+Route::get('', [UserController::class, 'search'])->name("users.search");
 
-/*会員更新
-Route::patch('/', [UserController::class, 'update'])->name('users.update');;
+/*会員情報一覧画面への遷移*/
+Route::get('/users/search/index', [UserController::class, 'index'])->name("users.index");
+
+/*会員詳細画面への遷移*/
+Route::get('/users/search/index/{id}', [UserController::class, 'show'])->name('users.show');
+
+/*
+|--------------------------------------------------------------------------
+| ココから会員情報更新
+|--------------------------------------------------------------------------
+*/
+
+/*会員情報更新画面の遷移先
+Route::post('/users/search/index/show/update', [UserController::class, 'update_post'])->name('users.update-post');
+
+/*会員情報更新の作成画面の表示*/
+Route::get('/users/search/index/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+
+/*確認画面の表示
+Route::get('/users/search/index/show/update/confirm', [UserController::class, 'update_confirm'])->name("users.update-confirm");
+
+/*確認画面からフォーム遷移先
+Route::post('/users/search/index/show/update/confirm', [UserController::class, 'update_send'])->name('users.update-send');
+
+/*変更アクション*/
+Route::patch('/users/search/index/{id}/edit/update/', [UserController::class, 'update'])->name("users.update");
 
 /*退会
 Route::delete('/', [UserController::class, 'destroy'])->name('users.destroy');;

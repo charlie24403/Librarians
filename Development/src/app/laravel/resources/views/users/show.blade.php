@@ -1,0 +1,23 @@
+@extends('layouts.app')
+
+@section('content')
+    <p>会員詳細画面</p>
+        <dl>
+            <dt>会員ID</dt>
+            <dd>{{ $user->id }}</dd>
+            <dt>名前</dt>
+            <dd>{{ $user->name }}</dd>
+            <dt>住所</dt>
+            <dd>{{ $user->address }}</dd>
+            <dt>電話番号</dt>
+            <dd>{{ $user->tel }}</dd>
+            <dt>メールアドレス</dt>
+            <dd>{{ $user->mail }}</dd>
+            <dt>生年月日</dt>
+            <dd>{{ $user->birth }}</dd>
+        </dl>
+    <p><a href="{{ route('users.edit', $user->id) }}">変更</a></p>
+    
+    <p>削除</p>
+    <a href="{{ route('users.index')}}">検索結果一覧に戻る</a>
+@endsection

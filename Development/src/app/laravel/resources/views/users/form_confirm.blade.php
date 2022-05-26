@@ -2,7 +2,8 @@
 
 @section('content')
 <h3>確認</h3>
-<form method="post" action="{{ route('users.send') }}">
+<form method="post" action="{{ route('users.send', $user->id) }}">
+	@method('patch')
 	@csrf
 	<label>名前</label>
 	<div>

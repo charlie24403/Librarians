@@ -34,7 +34,7 @@
 
         <!--会員検索-->
         <p>
-            会員情報検索
+            <a href="{{ route('users.search') }}">会員情報検索</a>
         </p>
 
     </body>
