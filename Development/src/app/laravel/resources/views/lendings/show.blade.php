@@ -11,7 +11,7 @@
 <!-- content -->
 @section('content')
 <h1>予約詳細画面</h1>
-<a href="{{ route('lendings.index') }}">検索結果画面に戻る</a>
+<a href="{{ route('lendings.index') }}"><button type="button">検索結果画面に戻る</button></a>
 
 <p>貸出ID</p>
 {{ $lendings->id }}
@@ -31,9 +31,9 @@
 {{ $lendings->finishing_date }}
 
 <hr>
-<a href="{{ route('lendings.edit', $lendings->id) }}">変更</a></p>
+<a href="{{ route('lendings.edit', $lendings->id) }}"><button type="button">変更</button></a>
 
-<a href="#" onclick="deleteReservation()">削除</a>
+<a href="#" onclick="deleteReservation()"><button type="button">削除</button></a>
 <form action="{{  route('lendings.destroy', $lendings) }}" method ="post"
     id ="delete-form">
     @csrf
