@@ -14,13 +14,13 @@
             @if($IS_MENU)
                 <ul class = "navigation">
                         <li>
-                            <a href="">トップページ</a>
+                            <a href="{{ route('home') }}">トップページ</a>
                         </li>
                 </ul>
             @else
                 <ul class = "navigation">
                         <li>
-                            <a href="">トップページ</a>
+                            <a href="{{ route('home') }}">トップページ</a>
                         </li>
                         <li>
                             @switch($CATEGORY)
@@ -33,11 +33,11 @@
                                 @case('stocks')
                                     <a href="{{ route('stocks.menu') }}">メニューに戻る</a>
                                     @break
-                                @case('lending')
-                                    <a href="{{ route('stocks.menu') }}">メニューに戻る</a>
+                                @case('lendings')
+                                    <a href="{{ route('lendings.menu') }}">メニューに戻る</a>
                                     @break
                                 @default
-                                    <a href="">メニューに戻る</a>
+                                    <a href="{{ route('home') }}">メニューに戻る</a>
                             @endswitch
                         </li>
                 </ul>
