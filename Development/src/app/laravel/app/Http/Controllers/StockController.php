@@ -9,7 +9,6 @@ use App\Http\Controllers;
 use Validator;
 use App\Models\Document;
 use App\Models\Stock;
-use App\Models\Document;
 use App\Models\Category;
 use Carbon\Carbon;
 
