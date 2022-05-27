@@ -4,4 +4,8 @@
         <li>{{ $error }}</li>
         @endforeach
     </ul>
+<<<<<<< HEAD
 @endif
+=======
+@endif
+>>>>>>> main
