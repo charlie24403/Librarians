@@ -13,9 +13,9 @@ class StockSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1; $i <= 200; $i++) {
+        for ($i=1; $i <= 150; $i++) {
             $stock = new \App\Models\Stock([
-                'document_id' => rand(2,100)
+                'document_id' => rand(191,290)
             ]);
             $stock->save();
         }

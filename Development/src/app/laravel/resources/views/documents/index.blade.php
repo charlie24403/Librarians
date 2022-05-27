@@ -11,5 +11,5 @@
 <!-- content -->
 @section('content')
     <button type="button" onclick="history.back()">再検索</button>
-    @include('/documents/commons/documents_datalist')
+    @include('documents.commons.documents_datalist')
 @endsection
