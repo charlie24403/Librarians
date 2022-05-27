@@ -16,17 +16,22 @@
 
         <!--資料管理-->
         <p>
-            資料管理
+            <a href="{{ route('documents.menu') }}">資料管理</a>
+        </p>
+
+        <!--在庫管理-->
+        <p>
+            <a href="{{ route('stocks.menu') }}">在庫管理</a>
         </p>
 
         <!--貸出管理-->
         <p>
-           貸出管理
+            <a href="{{ route('lendings.menu') }}">貸出管理</a>
         </p>
 
-        <!--予約管理-->
+        <!--予約管理
         <p>
             予約管理
-        </p>
+        </p>-->
     </body>
 </html>
