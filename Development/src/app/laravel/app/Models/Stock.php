@@ -9,7 +9,9 @@ class Stock extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'document_id'
+        'document_id',
+        'title',
+        'disposal',
     ];
 
     public function document()

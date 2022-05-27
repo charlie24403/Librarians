@@ -31,3 +31,4 @@ Route::get('/stocks-menu', [StockController::class, 'menu'])->name('stocks.menu'
 Route::get('/stocks-menu/stocks/search', [StockController::class, 'search'])->name('stocks.search');
 Route::post('/stocks-menu/stocks/confirm', [StockController::class, 'confirm'])->name('stocks.confirm');
 Route::resource('/stocks-menu/stocks', StockController::class);
+Route::patch('/stocks-menu/stocks/{id}/waste', [StockController::class, 'waste'])->name('stocks.waste');
