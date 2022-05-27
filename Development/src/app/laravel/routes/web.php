@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\StockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/documents-menu', [DocumentController::class, 'menu'])->name('documents.menu');
+
+Route::get('/documents-menu/documents/search', [DocumentController::class, 'search'])->name('documents.search');
+Route::post('/documents-menu/documents/confirm', [DocumentController::class, 'confirm'])->name('documents.confirm');
+Route::resource('/documents-menu/documents', DocumentController::class);
+
+
+Route::get('/stocks-menu', [StockController::class, 'menu'])->name('stocks.menu');
+
+Route::get('/stocks-menu/stocks/search', [StockController::class, 'search'])->name('stocks.search');
+Route::post('/stocks-menu/stocks/confirm', [StockController::class, 'confirm'])->name('stocks.confirm');
+Route::resource('/stocks-menu/stocks', StockController::class);
+Route::patch('/stocks-menu/stocks/{id}/waste', [StockController::class, 'waste'])->name('stocks.waste');
