@@ -1,29 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>
-            Librarians
-        </title>
-        <link rel="stylesheet" href="/css/main.css">
+        @hasSection('page_title')
+            <title>@yield('page_title') | {{ config('app.name') }}</title>
+        @else
+            <title>{{ config('app.name') }}</title>
+        @endif
+        <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
     </head>
     <body>
         <header>
-            <div class="container">
+            @if($IS_MENU)
                 <ul class = "navigation">
-                    <li>
-                        <a href="{{ route('home') }}">トップページ</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('users.menu') }}">会員管理メニュー</a>
-                    </li>
+                        <li>
+                            <a href="">トップページ</a>
+                        </li>
                 </ul>
-            </div>
+            @else
+                <ul class = "navigation">
+                        <li>
+                            <a href="">トップページ</a>
+                        </li>
+                        <li>
+                            @switch($CATEGORY)
+                                @case('user')
+                                    <a href="{{ route('user.menu') }}">メニューに戻る</a>
+                                    @break
+                                @case('documents')
+                                    <a href="{{ route('documents.menu') }}">メニューに戻る</a>
+                                    @break
+                                @case('stocks')
+                                    <a href="{{ route('stocks.menu') }}">メニューに戻る</a>
+                                    @break
+                                @default
+                                    <a href="">メニューに戻る</a>
+                            @endswitch
+                        </li>
+                </ul>
+            @endif
+            <h1>図書管理システム</h1>
         </header>
         <main>
-            <div class="container">
-                @yield('content')
-            </div>
+            <h2>@yield('page_title')</h2>
+            @yield('content')
         </main>
+        <footer>
+
+        </footer>
     </body>
 </html>
