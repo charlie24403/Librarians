@@ -51,8 +51,8 @@
         または
     </p>
 
-    <p>
-        <a href="{{ route('users.create') }}">キャンセル</a>
-    </p>
+    <a href="{{ route('users.create') }}">
+        <button type="button">キャンセル</button>
+    </a>
 </form>
 @endsection

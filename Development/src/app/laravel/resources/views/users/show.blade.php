@@ -16,9 +16,15 @@
             <dt>生年月日</dt>
             <dd>{{ $user->birth }}</dd>
         </dl>
-    <p><a href="{{ route('users.edit', $user->id) }}">変更</a></p>
+    <p>
+        <a href="{{ route('users.edit', $user->id) }}">
+            <button type="button">変更</button>
+        </a>
+    </p>
     
-    <a href="#" onclick="deleteuser()">削除</a>
+    <a href="#" onclick="deleteuser()">
+        <button type="button">削除</button>
+    </a>
     <form action="{{  route('users.destroy', $user) }}" method ="post"
     id ="delete-form">
     @csrf

@@ -10,12 +10,12 @@
 @section('content')
     <h1>会員管理メニュー</h1>
     <!--新規会員登録-->
-    <p>
-        <a href="{{ route('users.create') }}">新規会員登録</a>
-    </p>
+    <a href="{{ route('users.create') }}">
+        <button type="button">新規会員登録</button>
+    </a>
 
     <!--会員検索-->
-    <p>
-        <a href="{{ route('users.search') }}">会員情報検索</a>
-    </p>
+    <a href="{{ route('users.search') }}">
+        <button type="button">会員情報検索</button>
+    </a>
 @endsection
