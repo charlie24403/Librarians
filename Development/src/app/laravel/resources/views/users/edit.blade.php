@@ -48,7 +48,9 @@
     </p>
 
     <p>
-        <a href="{{ route('users.show', $user->id??'') }}">キャンセル</a>
+        <a href="{{ route('users.show', $user->id??'') }}">
+            <button type="button">キャンセル</button>
+        </a>
     </p>
 </form>
 @endsection
