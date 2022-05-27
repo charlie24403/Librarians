@@ -10,7 +10,7 @@
 
 <!-- content -->
 @section('content')
-    <h1>貸出管理メニュー</h1>
-    <a href="{{ route('lendings.create') }}">新規貸出</a>
-    <a href="{{ route('lendings.search') }}" >貸出資料検索</a>
+
+    <a href="{{ route('lendings.create') }}"><button type="button">新規貸出</button></a>
+    <a href="{{ route('lendings.search') }}" ><button type="button">貸出資料新規登録</button></a>
 @endsection
