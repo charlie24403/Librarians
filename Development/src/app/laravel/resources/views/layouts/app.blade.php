@@ -33,6 +33,9 @@
                                 @case('stocks')
                                     <a href="{{ route('stocks.menu') }}">メニューに戻る</a>
                                     @break
+                                @case('lending')
+                                    <a href="{{ route('stocks.menu') }}">メニューに戻る</a>
+                                    @break
                                 @default
                                     <a href="">メニューに戻る</a>
                             @endswitch

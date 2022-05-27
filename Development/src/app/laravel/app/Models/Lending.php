@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Lending extends Model
 {
     use HasFactory;
+    protected $fillable = ["user_id", "document_id", "created_at", "return_date", "finishing_date"];
 }
