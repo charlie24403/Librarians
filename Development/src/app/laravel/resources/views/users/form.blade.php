@@ -2,11 +2,13 @@
 @section('page_title', '新規会員登録')
 <?php
     $IS_MENU = FALSE;
-    $CATEGORY = 'member';
+    $CATEGORY = 'users';
 ?>
 
+<!-- layout -->
 @extends('layouts.app')
 
+<!-- content -->
 @section('content')
 @include('commons/flash')
 <form action="{{ route('users.post')}}" method="post">
@@ -42,9 +44,9 @@
         </label>
     </p>
     <p>
-    
+
     <p>
-        <input class="btn btn-primary" type="submit" value="送信"/>       
+        <input class="btn btn-primary" type="submit" value="送信"/>
     </p>
 
     <p>
