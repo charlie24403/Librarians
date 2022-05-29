@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Lending;
+use App\Models\User;
+use App\Models\Document;
 use Validator;
 
 class LendingController extends Controller
@@ -132,7 +134,9 @@ class LendingController extends Controller
     public function show($id)
     {
         $lendings = \App\Models\Lending::find($id);
-        return view('lendings.show', ['lendings' => $lendings]);
+        $documents = \App\Models\Document::all();
+        $users = \App\Models\User::all();
+        return view('lendings.show', ['lendings' => $lendings ,'documents' => $documents, 'users' => $users] );
     }
 
     /**

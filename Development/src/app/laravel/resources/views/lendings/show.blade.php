@@ -16,12 +16,12 @@
     {{ $lendings->id }}
     <p>会員ID</p>
     {{ $lendings->user_id }}
-    {{-- <p>会員名</p> --}}
-
+    <p>会員名</p>
+    {{ $users[$lendings->user_id]->name }}
     <p>資料ID</p>
     {{ $lendings->document_id }}
-    {{-- <p>資料名</p> --}}
-
+    <p>資料名</p>
+    {{ $documents[$lendings->document_id]->title }}
     <p>貸出日</p>
     {{ $lendings->created_at }}
     <p>返却期日</p>
@@ -30,7 +30,7 @@
     {{ $lendings->finishing_date }}
 
     <hr>
-    <a href="{{ route('lendings.edit', $lendings->id) }}"><button type="button">変更</button></a>
+    <a href="{{ route('lendings.edit', $lendings->id) }}"><button type="button">返却</button></a>
 
     <a href="#" onclick="deleteReservation()"><button type="button">削除</button></a>
     <form action="{{  route('lendings.destroy', $lendings) }}" method ="post"

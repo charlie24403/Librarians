@@ -17,31 +17,31 @@
         <p>
             <label>
                 会員ID<br>
-                <input type="number" name="user_id" value="{{ old('user_id') }}">
+                <input type="number" name="user_id" value="{{ $lendings->user_id }}">
             </label>
         </p>
         <p>
             <label>
                 資料ID<br>
-                <input type="number" name="document_id" value="{{ old('document_id') }}">
+                <input type="number" name="document_id" value="{{ $lendings->document_id }}">
             </label>
         </p>
         <p>
             <label>
                 貸出期日<br>
-                <input type="date" name="return_date" value="{{ old('return_date') }}">
+                <input type="date" name="return_date" value="{{ $lendings->return_date }}">
             </label>
         </p>
         <p>
             <label>
                 返却日<br>
-                <input type="date" name="finishing_date" value="{{ old('finishing_date') }}">
+                <input type="date" name="finishing_date" value="{{ $lendings->finishing_date }}">
             </label>
         </p>
         <p>
 
         <p>
-            <input class="btn btn-primary" type="submit" value="更新"/>
+            <input class="btn btn-primary" type="submit" value="返却"/>
         </p>
 
         <p>
@@ -49,7 +49,7 @@
         </p>
 
         <p>
-            <a href="{{ route('lendings.show', $lendings->id) }}">キャンセル</a>
+            <a href="{{ route('lendings.show', $lendings->id) }}"><button type="button">キャンセル</button></a>
         </p>
     </form>
 @endsection
