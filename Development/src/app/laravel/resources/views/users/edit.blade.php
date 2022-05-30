@@ -14,7 +14,7 @@
 @include('commons/flash')
 <form action="{{ route('users.update_post', $user->id)}}" method="post">
     @csrf
-    @include('users/commons/form')
+    @include('users/commons/form_edit')
 
     <button type="submit" class="btn btn-primary">更新</button>
 
@@ -23,4 +23,9 @@
     </a>
 </form>
 </div>
+<?php
+        if (isset($edited)) {
+            echo '<script type="text/javascript">alert("更新が完了しました");</script> ';
+        }
+    ?>
 @endsection

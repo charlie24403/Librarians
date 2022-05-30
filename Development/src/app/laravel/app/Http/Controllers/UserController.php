@@ -47,7 +47,7 @@ class UserController extends Controller
         if($created){
             return view('users/create', ['created' => $created]);
         }else{
-            return view('users/create', ['user' => $user]);
+            return view('users/create');
         }
     }
 
@@ -100,13 +100,13 @@ class UserController extends Controller
 
 		//セッションに値が無い時はフォームに戻る
 		if(!$input){
-			return redirect( route('users.create') );
+			return redirect( route('users.create', ['user' => $user]) );
 		}
 
 		//セッションを空にする
 		$request->session()->forget("form_input");
 
-		return redirect( route('users.create') )->with('created', TRUE);
+		return redirect( route('users.create', ['user' => $user]) )->with('created', TRUE);
 	}
 
     public function search(){
