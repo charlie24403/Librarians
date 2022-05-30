@@ -10,13 +10,15 @@
 
 <!-- content -->
 @section('content')
-    @include('commons/flash')
-    <form action="{{ route("documents.confirm") }}" method="post">
-        <input type="hidden" name="confirm_type" value="edit">
-        <input type="hidden" name="document_id" value="{{ $document['id'] }}">
+    <div class="input-form">
+        @include('commons/flash')
+        <form action="{{ route("documents.confirm") }}" method="post">
+            <input type="hidden" name="confirm_type" value="edit">
+            <input type="hidden" name="document_id" value="{{ $document['id'] }}">
 
-        @include('/documents/commons/form_edit')
-        <button type="submit">確認</button>
-        <button type="button" onclick="history.back()">キャンセル</button>
-    </form>
+            @include('/documents/commons/form_edit')
+            <button type="submit">確認</button>
+            <button type="button" onclick="history.back()">キャンセル</button>
+        </form>
+    </div>
 @endsection

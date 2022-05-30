@@ -10,14 +10,15 @@
 
 <!-- content -->
 @section('content')
-    @include('commons/flash')
-    <form action="{{ route("stocks.confirm") }}" method="post">
-        <input type="hidden" name="confirm_type" value="edit">
-        <input type="hidden" name="stock_id" value="{{ $stock['id'] }}">
+    <div class="input-form">
+        @include('commons/flash')
+        <form action="{{ route("stocks.confirm") }}" method="post">
+            <input type="hidden" name="confirm_type" value="edit">
+            <input type="hidden" name="stock_id" value="{{ $stock['id'] }}">
 
-
-        @include('/stocks/commons/form_edit')
-        <button type="submit">変更</button>
-        <button type="button" onclick="history.back()">キャンセル</button>
-    </form>
+            @include('/stocks/commons/form_edit')
+            <button type="submit">変更</button>
+            <button type="button" onclick="history.back()">キャンセル</button>
+        </form>
+    </div>
 @endsection

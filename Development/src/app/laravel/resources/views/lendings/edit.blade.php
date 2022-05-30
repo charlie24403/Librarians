@@ -10,46 +10,41 @@
 
 <!-- content -->
 @section('content')
-    @include('commons/flash')
-    <form action="{{ route('lendings.update', $lendings->id)}}" method="post">
-        @method('patch')
-        @csrf
-        <p>
-            <label>
-                会員ID<br>
-                <input type="number" name="user_id" value="{{ $lendings->user_id }}">
-            </label>
-        </p>
-        <p>
-            <label>
-                資料ID<br>
-                <input type="number" name="document_id" value="{{ $lendings->document_id }}">
-            </label>
-        </p>
-        <p>
-            <label>
-                貸出期日<br>
-                <input type="date" name="return_date" value="{{ $lendings->return_date }}">
-            </label>
-        </p>
-        <p>
-            <label>
-                返却日<br>
-                <input type="date" name="finishing_date" value="{{ $lendings->finishing_date }}">
-            </label>
-        </p>
-        <p>
+    <div class="input-form">
+        @include('commons/flash')
+        <form action="{{ route('lendings.update', $lendings->id)}}" method="post">
+            @method('patch')
 
-        <p>
-            <input class="btn btn-primary" type="submit" value="返却"/>
-        </p>
+            <div class="form">
+                @csrf
+                <dl>
+                    <dt>会員ID</dt>
+                    <dd>
+                        <input type="number" name="user_id" value="{{ $lendings->user_id }}">
+                    </dd>
 
-        <p>
-            または
-        </p>
+                    <dt>資料ID</dt>
+                    <dd>
+                        <input type="number" name="document_id" value="{{ $lendings->document_id }}">
+                    </dd>
 
-        <p>
-            <a href="{{ route('lendings.show', $lendings->id) }}"><button type="button">キャンセル</button></a>
-        </p>
-    </form>
+                    <dt>貸出期日</dt>
+                    <dd>
+                        <input type="date" name="return_date" value="{{ $lendings->return_date }}">
+                    </dd>
+
+                    <dt>返却日</dt>
+                    <dd>
+                        <input type="date" name="finishing_date" value="{{ $lendings->finishing_date }}">
+                    </dd>
+                </dl>
+            </div>
+
+            <button type="submit">返却</button>
+
+            <a href="{{ route('lendings.lendings', $user->id) }}">
+                    <button type="button">キャンセル</button>
+            </a>
+        </form>
+    </div>
 @endsection

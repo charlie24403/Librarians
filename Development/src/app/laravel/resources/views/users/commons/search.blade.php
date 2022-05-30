@@ -1,4 +1,4 @@
-<div class="form">
+<div class = "form">
     @csrf
     <dl>
         <dt>名前</dt>

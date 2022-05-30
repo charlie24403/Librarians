@@ -8,6 +8,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class = "detail-page">
     @if(isset($edited))
         <a href="{{ route('stocks.search')}}">
             <button type="button">検索に戻る</button>
@@ -44,4 +45,5 @@
             }
         }
     </script>
+</div>
 @endsection
