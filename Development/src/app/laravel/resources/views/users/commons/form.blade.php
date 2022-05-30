@@ -1,5 +1,5 @@
 <div class = "form">
-    
+    @csrf
     <dl>
         <dt>名前</dt>
         <dd><input type="text" name="name" value="{{ $user['name'] }}"></dd>

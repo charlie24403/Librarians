@@ -47,7 +47,7 @@ class UserController extends Controller
         if($created){
             return view('users/create', ['created' => $created]);
         }else{
-            return view('users/create');
+            return view('users/create', ['user' => $user]);
         }
     }
 
