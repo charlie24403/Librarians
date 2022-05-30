@@ -1,3 +1,4 @@
+<div class = "data-list">
 <table border="1">
     <thead>
         <tr>
@@ -25,4 +26,6 @@
         @endforeach
     </tbody>
 </table>
+
 {{ $users->appends(Request::all())->links() }}
+</div>

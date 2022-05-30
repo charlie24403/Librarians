@@ -9,11 +9,13 @@
 
 <!-- content -->
 @section('content')
-<h3>確認</h3>
-<form method="post" action="{{ route('users.send') }}">
-	@include('users/commons/confirm')
+<div class = "confirm-page">
+    <h3>確認</h3>
+    <form method="post" action="{{ route('users.send') }}">
+        @include('users/commons/confirm')
 
-        <input name="back" type="submit" value="戻る" />
-        <input type="submit" value="登録する" />
+            <input name="back" type="submit" value="戻る" />
+            <input type="submit" value="登録する" />
     </form>
+</div>
 @endsection
