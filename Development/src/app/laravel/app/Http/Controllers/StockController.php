@@ -98,8 +98,8 @@ class StockController extends Controller
 
     public function confirm(Request $request)
     {
-        
-        
+
+
         $categories = Category::all();
 
         $confirm_type = $request->confirm_type;
@@ -121,7 +121,7 @@ class StockController extends Controller
 		}
 
 		$request->session()->put("form_data", $form_data);
-        
+
         if ($confirm_type == "edit") {
             $stock_id = $request->stock_id;
 
@@ -150,7 +150,7 @@ class StockController extends Controller
 
 		$request->session()->forget("form_data");
 
-		return redirect( route('stocks.create') )->with('created', TRUE);;
+		return redirect( route('stocks.create') )->with('created', TRUE);
     }
 
     /**
@@ -162,7 +162,7 @@ class StockController extends Controller
     public function show(Request $request ,$id)
     {
         $stock = Stock::find($id);
-        
+
         return view('stocks.show', ['stock' => $stock]);
         /*
         $edited = $request->session()->get("edited");
@@ -203,7 +203,7 @@ class StockController extends Controller
 			return redirect( route('stocks.edit') );
 		}
 
-        
+
         Stock::where('id','=',$id)->update([
             'document_id' => $form_data["document_id"],
         ]);
@@ -228,7 +228,7 @@ class StockController extends Controller
 
     public function waste($id){
         $stock = Stock::find($id);
-        
+
         $stock["disposal"] = Carbon::now(); // 今日
         $stock->save();
         return view('stocks.menu');
