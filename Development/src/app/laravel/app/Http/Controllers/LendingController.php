@@ -220,6 +220,28 @@ class LendingController extends Controller
 
     }
 
+/**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function update(Request $request, $id)
+    {
+        Lending::where('id','=',$id)->update([
+            'user_id' => $request->user_id,
+            'document_id' => $request->document_id,
+            'return_date' => $request->return_date,
+            'finishing_date' => $request->finishing_date,
+        ]);
+        $lendings = Lending::find($id);
+        return view("lendings.update_complete", ['lendings' => $lendings]);
+        
+    }
+
+
     public function complete($id){	
         $lendings = Lending::find($id);
 		return view("lendings.update_complete" , ['lendings' => $lendings] );
