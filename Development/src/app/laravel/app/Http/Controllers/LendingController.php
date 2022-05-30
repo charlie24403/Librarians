@@ -60,10 +60,16 @@ class LendingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $lendings = \App\Models\Lending::all();
-        return view('lendings.create', ['lendings' => $lendings]);
+        $created = $request->session()->get("created");
+
+        if($created){
+            return view('lendings/create', ['lendings' => $lendings, 'created' => $created]);
+        }else{
+            return view('lendings/create', ['lendings' => $lendings]);
+        }
     }
 
     public function confirm(Request $request)
@@ -151,28 +157,73 @@ class LendingController extends Controller
         return view('lendings.edit', ['lendings' => $lendings]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    //update_postメソッドの記述
+    public function update_post(Request $request, $id)
     {
-        Lending::where('id','=',$id)->update([
-            'user_id' => $request->user_id,
-            'document_id' => $request->document_id,
-            'return_date' => $request->return_date,
-            'finishing_date' => $request->finishing_date,
-        ]);
         $lendings = Lending::find($id);
+        $input = $request->only($this->formItems);
+        
+        $validator = Validator::make($input, $this->validator);
+		if($validator->fails()){
 
-        return view("lendings.update_complete", ['lendings' => $lendings]);
+			return redirect(route('lendings.edit', $id))
+				->withInput()
+				->withErrors($validator);
+		}
+        //セッションに書き込む
+		$request->session()->put("form_input", $input);
+
+		return redirect( route('lendings.update_confirm', $lendings->id) );
     }
 
-    public function complete(){
-		return view("lendings.form_complete");
+    public function update_confirm(Request $request, $id)
+    {
+        $lendings = Lending::find($id);
+        //セッションから値を取り出す
+		$input = $request->session()->get("form_input");
+		//セッションに値が無い時はフォームに戻る
+		if(!$input){
+			return redirect( route('lendings.edit', $id) );
+		}
+		return view("lendings.edit_confirm",['input' => $input], ['lendings' => $lendings]);
+    }
+
+    public function update_send($id, Lending $lendings, Request $request)
+    {
+        
+        //セッションから値を取り出す
+		$input = $request->session()->get("form_input");
+        
+        //戻るボタンが押された時
+		if($request->has("back")){
+    			return redirect( route('lendings.edit', $id) )
+    				->withInput($input);
+        }
+
+        Lending::where('id','=',$id)->update([
+            'document_id' => $input["document_id"],
+            'user_id' => $input["user_id"],
+            'return_date' => $input["return_date"],
+            'finishing_date' => $input["finishing_date"]
+        ]);
+        $lendings = Lending::find($id);
+		
+		//セッションに値が無い時はフォームに戻る
+		if(!$input){
+			return redirect( route('lendings.edit', $id) );
+		}
+
+		//セッションを空にする
+		$request->session()->forget("form_input");
+
+        return redirect( route('lendings.update_complete', $id) );
+
+    }
+
+    public function complete($id){	
+        $lendings = Lending::find($id);
+		return view("lendings.update_complete" , ['lendings' => $lendings] );
+
 	}
 
     /**

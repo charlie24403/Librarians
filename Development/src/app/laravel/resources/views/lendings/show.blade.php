@@ -12,7 +12,33 @@
 @section('content')
     <a href="{{ route('lendings.index') }}"><button type="button">検索結果画面に戻る</button></a>
 
-    <p>貸出ID</p>
+    <dl>
+        <dt>貸出ID</dt>
+        <dd>{{ $lendings->id }}</dd>
+
+        <dt>会員ID</dt>
+        <dd>{{ $lendings->user_id }}</dd>
+
+        <dt>会員名</dt>
+        <dd>{{ $users[$lendings->user_id]->name }}</dd>
+
+        <dt>資料ID</dt>
+        <dd>{{ $lendings->document_id }}</dd>
+
+        <dt>資料名</dt>
+        <dd>{{ $documents[$lendings->document_id]->title }}</dd>
+
+        <dt>貸出日</dt>
+        <dd>{{ $lendings->created_at }}</dd>
+
+        <dt>貸出期日</dt>
+        <dd>{{ $lendings->return_date }}</dd>
+
+        <dt>返却日</dt>
+        <dd>{{ $lendings->finishing_date }}</dd>
+    </dl>
+
+    {{-- <p>貸出ID</p>
     {{ $lendings->id }}
     <p>会員ID</p>
     {{ $lendings->user_id }}
@@ -27,7 +53,7 @@
     <p>返却期日</p>
     {{ $lendings->return_date }}
     <p>返却日</p>
-    {{ $lendings->finishing_date }}
+    {{ $lendings->finishing_date }} --}}
 
     <hr>
     <a href="{{ route('lendings.edit', $lendings->id) }}"><button type="button">返却</button></a>

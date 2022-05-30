@@ -12,6 +12,6 @@
 @section('content')
         <p>更新完了しました</p>
         <p>
-            <a href="{{ route('lendings.show', $lendings->id) }}">戻る</a>
+            <a href="{{ route('lendings.show', $lendings->id) }}"><button type="button">戻る</button></a>
         </p>
 @endsection
