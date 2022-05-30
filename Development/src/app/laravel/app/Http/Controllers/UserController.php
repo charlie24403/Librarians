@@ -40,7 +40,7 @@ class UserController extends Controller
     public function create()
     {
         $user = new User;
-        return view('users.form');
+        return view('users.create');
     }
 
     public function post(Request $request){
@@ -160,6 +160,78 @@ class UserController extends Controller
         return view('users.edit', ['user' => $user]);
     }
 
+    public function update_post(Request $request, $id){
+        $user = User::find($id);
+        $input = $request->only($this->formItems);
+        
+        $validator = Validator::make($input, $this->validator);
+		if($validator->fails()){
+
+			return redirect(route('users.edit', $id))
+				->withInput()
+				->withErrors($validator);
+		}
+        //セッションに書き込む
+		$request->session()->put("form_input", $input);
+
+		return redirect( route('users.update_confirm', $user->id) );
+    }
+
+    public function update_confirm(Request $request, $id){
+		$user = User::find($id);
+        //セッションから値を取り出す
+		$input = $request->session()->get("form_input");
+		
+		//セッションに値が無い時はフォームに戻る
+		if(!$input){
+			return redirect( route('users.edit', $id) );
+		}
+		return view("users.update_confirm",['input' => $input], ['user' => $user]);
+	}	
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update_send($id, User $user, Request $request){
+        
+		//セッションから値を取り出す
+		$input = $request->session()->get("form_input");
+
+        //戻るボタンが押された時
+		if($request->has("back")){
+    			return redirect( route('users.edit', $id) )
+    				->withInput($input);
+	    }
+        
+
+        User::where('id','=',$id)->update([
+            'name' => $input["name"],
+            'address' => $input["address"],
+            'tel' => $input["tel"],
+            'mail' => $input["mail"],
+            'birth' => $input["birth"]
+        ]);
+        $user = User::find($id);
+		
+		//セッションに値が無い時はフォームに戻る
+		if(!$input){
+			return redirect( route('users.edit', $id) );
+		}
+
+		//セッションを空にする
+		$request->session()->forget("form_input");
+
+        return redirect( route('users.update_complete', $id) );
+	}
+
+    public function update_complete($id){
+        $user = User::find($id);
+		return view("users.update_complete",  ['user' => $user]);
+	}
+
     /**
      * Update the specified resource in storage.
      *
@@ -167,19 +239,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, User $user, Request $request)
-    {
-        User::where('id','=',$id)->update([
-            'name' => $request->name,
-            'address' => $request->address,
-            'tel' => $request->tel,
-            'mail' => $request->mail,
-            'birth' => $request->birth,
-        ]);
-        $user = User::find($id);
-        
-        return view("users.update_complete", ['user' => $user]);
-    }
+    
 
     
     /**

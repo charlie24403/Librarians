@@ -25,7 +25,7 @@
                         <li>
                             @switch($CATEGORY)
                                 @case('user')
-                                    <a href="{{ route('user.menu') }}">メニューに戻る</a>
+                                    <a href="{{ route('users.menu') }}">メニューに戻る</a>
                                     @break
                                 @case('documents')
                                     <a href="{{ route('documents.menu') }}">メニューに戻る</a>

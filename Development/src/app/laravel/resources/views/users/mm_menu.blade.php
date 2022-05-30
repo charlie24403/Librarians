@@ -2,7 +2,7 @@
 @section('page_title', '会員管理メニュー')
 <?php
     $IS_MENU = FALSE;
-    $CATEGORY = 'member';
+    $CATEGORY = 'user';
 ?>
 
 @extends('layouts.app')

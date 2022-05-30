@@ -2,7 +2,7 @@
 @section('page_title', '会員検索')
 <?php
     $IS_MENU = FALSE;
-    $CATEGORY = 'users';
+    $CATEGORY = 'user';
 ?>
 
 <!-- layout -->

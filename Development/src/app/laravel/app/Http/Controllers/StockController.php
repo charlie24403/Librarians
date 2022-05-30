@@ -99,10 +99,13 @@ class StockController extends Controller
     public function confirm(Request $request)
     {
         
+        
         $categories = Category::all();
 
         $confirm_type = $request->confirm_type;
         $form_data = $request->only($this->formItems);
+
+        $documents = Document::find($form_data['document_id']);
 
         $validator = Validator::make($form_data, $this->validator);
 		if($validator->fails()){
@@ -122,7 +125,7 @@ class StockController extends Controller
         if ($confirm_type == "edit") {
             $stock_id = $request->stock_id;
 
-            return view('stocks/confirm', ['categories' => $categories, 'confirm_type' => $confirm_type, 'stock_id' => $stock_id,  'form_data' => $form_data]);
+            return view('stocks/confirm', ['categories' => $categories, 'confirm_type' => $confirm_type, 'stock_id' => $stock_id,  'form_data' => $form_data], ['documents' => $documents]);
         }elseif ($confirm_type == 'create') {
             return view('stocks/confirm', ['categories' => $categories, 'confirm_type' => $confirm_type, 'form_data' => $form_data]);
         }
@@ -186,7 +189,7 @@ class StockController extends Controller
 
     }
 
-    /**
+    /*
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -200,13 +203,14 @@ class StockController extends Controller
 			return redirect( route('stocks.edit') );
 		}
 
+        
         Stock::where('id','=',$id)->update([
             'document_id' => $form_data["document_id"],
         ]);
 
 		$request->session()->forget("form_data");
 
-		return redirect( route('stocks.show', $id) );
+		return redirect( route('stocks.show', $id, ) );
     }
 
     /**

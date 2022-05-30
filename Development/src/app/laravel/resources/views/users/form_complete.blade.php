@@ -1,3 +1,10 @@
+<!-- env -->
+@section('page_title', '会員登録完了')
+<?php
+    $IS_MENU = FALSE;
+    $CATEGORY = 'user';
+?>
+
 @extends('layouts.app')
 
 @section('content')

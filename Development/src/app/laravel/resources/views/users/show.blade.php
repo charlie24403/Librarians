@@ -1,3 +1,10 @@
+<!-- env -->
+@section('page_title', '会員情報詳細')
+<?php
+    $IS_MENU = FALSE;
+    $CATEGORY = 'user';
+?>
+
 @extends('layouts.app')
 
 @section('content')
@@ -42,5 +49,7 @@
     </script>
     
 
-    <a href="{{ route('users.index')}}">会員一覧に戻る</a>
+    <a href="{{ route('users.index')}}">
+        <button type="button">会員一覧に戻る</button>
+    </a>
 @endsection

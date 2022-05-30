@@ -1,5 +1,5 @@
 <!-- env -->
-@section('page_title', '会員登録確認')
+@section('page_title', '更新確認')
 <?php
     $IS_MENU = FALSE;
     $CATEGORY = 'user';
@@ -9,7 +9,7 @@
 
 @section('content')
 <h3>確認</h3>
-<form method="post" action="{{ route('users.send') }}">
+<form method="post" action="{{ route('users.update_send', $user->id) }}">
 	@include('users/commons/confirm')
 
 	<input name="back" type="submit" value="戻る" />

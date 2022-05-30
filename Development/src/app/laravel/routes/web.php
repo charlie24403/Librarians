@@ -74,8 +74,18 @@ Route::get('/users-menu/users/search/index/{id}', [UserController::class, 'show'
 /*会員情報更新の作成画面の表示*/
 Route::get('/users-menu/users/search/index/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
 
+/*新規会員登録画面の遷移先*/
+Route::post('/users-menu/users/search/index/{id}/edit', [UserController::class, 'update_post'])->name('users.update_post');
+
+/*確認画面の表示*/
+Route::get('/users-menu/users/search/index/{id}/edit/confirm', [UserController::class, 'update_confirm'])->name("users.update_confirm");
+
+/*確認画面からフォーム遷移先*/
+Route::post('/users-menu/users/search/index/{id}/edit/confirm', [UserController::class, 'update_send'])->name('users.update_send');
+
+
 /*変更アクション*/
-Route::patch('/users-menu/users/search/index/{id}/edit/update/', [UserController::class, 'update'])->name("users.update");
+Route::get('/users-menu/users/search/index/{id}/edit/confirm/update/', [UserController::class, 'update_complete'])->name("users.update_complete");
 
 /*
 |--------------------------------------------------------------------------
@@ -98,6 +108,7 @@ Route::get('/documents-menu/documents/search', [DocumentController::class, 'sear
 Route::post('/documents-menu/documents/confirm', [DocumentController::class, 'confirm'])->name('documents.confirm');
 Route::resource('/documents-menu/documents', DocumentController::class);
 
+// Stock-management ====================================================================================
 
 Route::get('/stocks-menu', [StockController::class, 'menu'])->name('stocks.menu');
 
