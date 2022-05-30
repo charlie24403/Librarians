@@ -10,7 +10,7 @@
 
 <!-- content -->
 @section('content')
-    <div class="input-form">
+    <div class="input-page">
         @include('commons/flash')
         <form action="{{ route('lendings.update', $lendings->id)}}" method="post">
             @method('patch')

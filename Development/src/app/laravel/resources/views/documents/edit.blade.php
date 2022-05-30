@@ -10,7 +10,7 @@
 
 <!-- content -->
 @section('content')
-    <div class="input-form">
+    <div class="input-page">
         @include('commons/flash')
         <form action="{{ route("documents.confirm") }}" method="post">
             <input type="hidden" name="confirm_type" value="edit">

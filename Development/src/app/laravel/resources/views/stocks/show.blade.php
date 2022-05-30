@@ -9,13 +9,16 @@
 
 @section('content')
 <div class = "detail-page">
-    @if(isset($edited))
+    <!-- @if(isset($edited))
         <a href="{{ route('stocks.search')}}">
             <button type="button">検索に戻る</button>
         </a>
     @else
         <button type="button" onclick="history.back()">戻る</button>
-    @endif
+    @endif -->
+    <a href="{{ route('stocks.search')}}">
+        <button type="button">検索に戻る</button>
+    </a>
 
     @include('stocks/commons/object_detail')
     <a href="{{ route('stocks.edit', $stock->id) }}">
@@ -40,7 +43,7 @@
         {
             event.preventDefault();
             if (window.confirm('削除しますか？')){
-                
+
                 document.getElementById('delete-form').submit();
             }
         }
