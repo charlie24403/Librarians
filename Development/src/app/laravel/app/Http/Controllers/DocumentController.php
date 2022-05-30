@@ -137,7 +137,7 @@ class DocumentController extends Controller
 
 		$request->session()->forget("form_data");
 
-		return redirect( route('documents.create') )->with('created', TRUE);;
+		return redirect( route('documents.create') )->with('created', TRUE);
     }
 
     /**

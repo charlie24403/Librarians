@@ -25,7 +25,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
 
     public function menu()
     {
@@ -37,7 +37,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $user = new User;
         return view('users.create');
@@ -61,13 +61,13 @@ class UserController extends Controller
     public function confirm(Request $request){
 		//セッションから値を取り出す
 		$input = $request->session()->get("form_input");
-		
+
 		//セッションに値が無い時はフォームに戻る
 		if(!$input){
 			return redirect( route('users.create') );
 		}
 		return view("users.form_confirm",['input' => $input]);
-	}	
+	}
 
     /**
      * Store a newly created resource in storage.
@@ -76,15 +76,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function send(Request $request){
-        
+
 		//セッションから値を取り出す
 		$input = $request->session()->get("form_input");
-        
-        //戻るボタンが押された時
-		if($request->has("back")){
-    			return redirect( route('users.create') )
-    				->withInput($input);
-	    }
 
         //
         $user = new User;
@@ -94,8 +88,8 @@ class UserController extends Controller
         $user->mail = $input["mail"];
         $user->birth = $input["birth"];
         $user->save();
-        
-		
+
+
 		//セッションに値が無い時はフォームに戻る
 		if(!$input){
 			return redirect( route('users.create') );
@@ -103,12 +97,8 @@ class UserController extends Controller
 
 		//セッションを空にする
 		$request->session()->forget("form_input");
-        
-		return redirect( route('users.complete') );
-	}
 
-    public function complete(){	
-		return view("users.form_complete");
+		return redirect( route('users.create') )->with('created', TRUE);
 	}
 
     public function search(){
@@ -118,7 +108,7 @@ class UserController extends Controller
 
 
     public function index(Request $request){
-        
+
         $query = User::orderBy('created_at');
         if ($request->name) {
             $query->where('name', 'LIKE', '%'. $request->name. '%');
@@ -163,7 +153,7 @@ class UserController extends Controller
     public function update_post(Request $request, $id){
         $user = User::find($id);
         $input = $request->only($this->formItems);
-        
+
         $validator = Validator::make($input, $this->validator);
 		if($validator->fails()){
 
@@ -181,13 +171,13 @@ class UserController extends Controller
 		$user = User::find($id);
         //セッションから値を取り出す
 		$input = $request->session()->get("form_input");
-		
+
 		//セッションに値が無い時はフォームに戻る
 		if(!$input){
 			return redirect( route('users.edit', $id) );
 		}
 		return view("users.update_confirm",['input' => $input], ['user' => $user]);
-	}	
+	}
 
     /**
      * Store a newly created resource in storage.
@@ -196,7 +186,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update_send($id, User $user, Request $request){
-        
+
 		//セッションから値を取り出す
 		$input = $request->session()->get("form_input");
 
@@ -205,7 +195,7 @@ class UserController extends Controller
     			return redirect( route('users.edit', $id) )
     				->withInput($input);
 	    }
-        
+
 
         User::where('id','=',$id)->update([
             'name' => $input["name"],
@@ -215,7 +205,7 @@ class UserController extends Controller
             'birth' => $input["birth"]
         ]);
         $user = User::find($id);
-		
+
 		//セッションに値が無い時はフォームに戻る
 		if(!$input){
 			return redirect( route('users.edit', $id) );
@@ -239,9 +229,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
 
-    
+
+
     /**
      * Remove the specified resource from storage.
      *

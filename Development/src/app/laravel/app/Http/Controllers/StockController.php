@@ -105,7 +105,7 @@ class StockController extends Controller
         $confirm_type = $request->confirm_type;
         $form_data = $request->only($this->formItems);
 
-        $documents = Document::find($form_data['document_id']);
+        $document = Document::find($form_data['document_id']);
 
         $validator = Validator::make($form_data, $this->validator);
 		if($validator->fails()){
@@ -125,9 +125,9 @@ class StockController extends Controller
         if ($confirm_type == "edit") {
             $stock_id = $request->stock_id;
 
-            return view('stocks/confirm', ['categories' => $categories, 'confirm_type' => $confirm_type, 'stock_id' => $stock_id,  'form_data' => $form_data], ['documents' => $documents]);
+            return view('stocks/confirm', ['categories' => $categories, 'confirm_type' => $confirm_type, 'stock_id' => $stock_id,  'form_data' => $form_data], ['document' => $document]);
         }elseif ($confirm_type == 'create') {
-            return view('stocks/confirm', ['categories' => $categories, 'confirm_type' => $confirm_type, 'form_data' => $form_data]);
+            return view('stocks/confirm', ['categories' => $categories, 'confirm_type' => $confirm_type, 'form_data' => $form_data], ['document' => $document]);
         }
     }
 

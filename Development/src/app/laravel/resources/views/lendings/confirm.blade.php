@@ -10,9 +10,11 @@
 
 <!-- content -->
 @section('content')
-    <form action="{{ route('lendings.store') }}" method="post">
-        @include('lendings/commons/array_detail')
-        <button type="submit">確認</button>
-        <button type="button" onclick="history.back()">戻る</button>
-    </form>
+    <div class="confirm-page">
+        <form action="{{ route('lendings.store') }}" method="post">
+            @include('lendings/commons/array_detail')
+            <button type="submit">確認</button>
+            <button type="button" onclick="history.back()">戻る</button>
+        </form>
+    </div>
 @endsection

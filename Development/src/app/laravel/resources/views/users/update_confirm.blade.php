@@ -13,9 +13,9 @@
 		<form method="post" action="{{ route('users.update_send', $user->id) }}">
 			@include('users/commons/confirm')
 
-			<input name="back" type="submit" value="戻る" />
-			<input type="submit" value="登録する" />
+            <button type="submit">確認</button>
+            <button type="button" onclick="history.back()">戻る</button>
 
 		</form>
-</div>  
+</div>
 @endsection

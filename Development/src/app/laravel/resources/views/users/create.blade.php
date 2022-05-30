@@ -20,4 +20,10 @@
             </a>
         </form>
     </div>
+
+    <?php
+        if (isset($created)) {
+            echo '<script type="text/javascript">alert("登録が完了しました");</script> ';
+        }
+    ?>
 @endsection
