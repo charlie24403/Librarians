@@ -42,7 +42,7 @@
 
             <button type="submit">返却</button>
 
-            <a href="{{ route('lendings.lendings', $user->id) }}">
+            <a href="{{ route('lendings.show', $lendings->id) }}">
                     <button type="button">キャンセル</button>
             </a>
         </form>
