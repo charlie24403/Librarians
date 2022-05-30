@@ -134,9 +134,9 @@ class LendingController extends Controller
     public function show($id)
     {
         $lendings = \App\Models\Lending::find($id);
-        $documents = \App\Models\Document::all();
-        $users = \App\Models\User::all();
-        return view('lendings.show', ['lendings' => $lendings ,'documents' => $documents, 'users' => $users] );
+        $user = \App\Models\User::find($lendings->user_id);
+        $document = \App\Models\Document::find($lendings->document_id);
+        return view('lendings.show', ['lendings' => $lendings ,'document' => $document, 'user' => $user] );
     }
 
     /**
