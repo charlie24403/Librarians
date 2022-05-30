@@ -27,6 +27,12 @@
     @method('delete')
     </form>
 
+    <?php
+        if (isset($edited)) {
+            echo '<script type="text/javascript">alert("編集が完了しました");</script> ';
+        }
+    ?>
+
     <script type="text/javascript">
     function deleteuser()
     {

@@ -146,10 +146,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $user = User::find($id);
-        return view('users.show', ['user' => $user]);
+
+        $edited = $request->session()->get("edited");
+        $request->session()->forget("edited");
+
+        if($edited){
+            return view('users.show', ['user' => $user, 'edited' => $edited]);
+        }else{
+            return view('users.show', ['user' => $user]);
+        }
     }
 
     public function edit($id)
@@ -193,17 +201,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update_send($id, User $user, Request $request){
+    public function update_send(Request $request, $id, User $user){
 
 		//セッションから値を取り出す
 		$input = $request->session()->get("form_input");
-
-        //戻るボタンが押された時
-		if($request->has("back")){
-    			return redirect( route('users.edit', $id) )
-    				->withInput($input);
-	    }
-
 
         User::where('id','=',$id)->update([
             'name' => $input["name"],
@@ -222,7 +223,7 @@ class UserController extends Controller
 		//セッションを空にする
 		$request->session()->forget("form_input");
 
-        return redirect( route('users.update_complete', $id) );
+        return redirect( route('users.show', $id) )->with('edited', TRUE);;
 	}
 
     public function update_complete($id){

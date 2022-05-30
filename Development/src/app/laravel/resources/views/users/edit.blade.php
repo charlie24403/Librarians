@@ -23,9 +23,4 @@
     </a>
 </form>
 </div>
-<?php
-        if (isset($edited)) {
-            echo '<script type="text/javascript">alert("更新が完了しました");</script> ';
-        }
-    ?>
 @endsection
