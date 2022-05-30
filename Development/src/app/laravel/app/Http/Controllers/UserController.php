@@ -40,7 +40,15 @@ class UserController extends Controller
     public function create(Request $request)
     {
         $user = new User;
-        return view('users.create');
+
+        $created = $request->session()->get("created");
+        $request->session()->forget("created");
+
+        if($created){
+            return view('users/create', ['created' => $created]);
+        }else{
+            return view('users/create');
+        }
     }
 
     public function post(Request $request){
