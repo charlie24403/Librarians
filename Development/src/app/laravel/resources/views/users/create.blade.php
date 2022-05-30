@@ -5,23 +5,16 @@
     $CATEGORY = 'user';
 ?>
 
+<!-- layout -->
 @extends('layouts.app')
 
-
+<!-- content -->
 @section('content')
-    <div class = "input-page">
+    <div class="input-page">
         @include('commons/flash')
         <form action="{{ route('users.post')}}" method="post">
             @include('users/commons/form')
-            
-            <p>
-                <input class="btn btn-primary" type="submit" value="登録"/>       
-            </p>
-
-            <p>
-                または
-            </p>
-
+            <button type="submit">登録</button>
             <a href="{{ route('users.create') }}">
                 <button type="button">キャンセル</button>
             </a>

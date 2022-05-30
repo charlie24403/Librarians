@@ -10,21 +10,23 @@
 
 <!-- content -->
 @section('content')
-    @include('commons/flash')
-    
-    <?php
-        if (isset($err)) {
-            echo $err;
-        }
-    ?>
+    <div class="input-page">
+        @include('commons/flash')
 
-    <form action="{{ route('lendings.confirm') }}" method="post">
-        @include('/lendings/commons/search')
-        <button type="submit">確認</button>
-        <a href="{{ route('lendings.create') }}">
-            <button type="button">キャンセル</button>
-        </a>
-    </form>
+        <?php
+            if (isset($err)) {
+                echo $err;
+            }
+        ?>
+
+        <form action="{{ route('lendings.confirm') }}" method="post">
+            @include('/lendings/commons/search')
+            <button type="submit">確認</button>
+            <a href="{{ route('lendings.create') }}">
+                <button type="button">キャンセル</button>
+            </a>
+        </form>
+    </div>
 
     <?php
         if (isset($created)) {
