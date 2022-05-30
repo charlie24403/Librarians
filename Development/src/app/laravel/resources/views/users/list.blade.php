@@ -5,6 +5,7 @@
     $CATEGORY = 'user';
 ?>
 
+<!-- layout -->
 @extends('layouts.app')
 
 <!-- content -->

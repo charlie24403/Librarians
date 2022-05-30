@@ -1,4 +1,5 @@
 <!-- env -->
+<<<<<<< HEAD
 @section('page_title', '更新情報入力')
 <?php
     $IS_MENU = FALSE;
@@ -16,7 +17,7 @@
     </p>
 
     <p>
-        または
+        <input class="btn btn-primary" type="submit" value="更新"/>
     </p>
 
     <p>

@@ -11,5 +11,5 @@
 <!-- content -->
 @section('content')
     <a href="{{ route('lendings.create') }}"><button type="button">新規貸出</button></a>
-    <a href="{{ route('lendings.search') }}" ><button type="button">貸出資料新規登録</button></a>
+    <a href="{{ route('lendings.search') }}" ><button type="button">検索</button></a>
 @endsection

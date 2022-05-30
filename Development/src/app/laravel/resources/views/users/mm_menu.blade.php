@@ -1,12 +1,14 @@
 <!-- env -->
-@section('page_title', '会員管理メニュー')
+@section('page_title', '資料登録確認')
 <?php
     $IS_MENU = FALSE;
     $CATEGORY = 'user';
 ?>
 
+<!-- layout -->
 @extends('layouts.app')
 
+<!-- content -->
 @section('content')
     <h1>会員管理メニュー</h1>
     <!--新規会員登録-->
