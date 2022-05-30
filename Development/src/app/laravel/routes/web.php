@@ -106,6 +106,7 @@ Route::get('/documents-menu', [DocumentController::class, 'menu'])->name('docume
 
 Route::get('/documents-menu/documents/search', [DocumentController::class, 'search'])->name('documents.search');
 Route::post('/documents-menu/documents/confirm', [DocumentController::class, 'confirm'])->name('documents.confirm');
+Route::get('/documents-menu/documents/error', [DocumentController::class, 'error'])->name('documents.error');
 Route::resource('/documents-menu/documents', DocumentController::class);
 
 // Stock-management ====================================================================================
@@ -160,4 +161,3 @@ Route::get('/lendings-menu/search/index/show/{id}/edit/thanks',[LendingControlle
 
 // //情報更新 menu以下リンク書き忘れずに
 // Route::post('/reservations-menu/　',[ReservationController::class, 'send'])->name('lendings.send');
-
