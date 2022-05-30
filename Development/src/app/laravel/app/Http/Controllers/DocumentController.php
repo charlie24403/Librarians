@@ -91,7 +91,8 @@ class DocumentController extends Controller
         $validator = Validator::make($form_data, $this->validator);
 		if($validator->fails()){
             if ($confirm_type == "edit") {
-                return redirect(route("documents.edit"))
+                $document_id = $request->document_id;
+                return redirect(route("documents.edit", $document_id))
 				->withInput()
 				->withErrors($validator);
             }elseif ($confirm_type == 'create') {
