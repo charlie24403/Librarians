@@ -42,14 +42,14 @@
 
 ### MM103(退会)
 - [MM103-02]確認画面/conform-page
-    - 入力内容/<data-detail
+    - 入力内容/data-detail
     - 退会ボタン
     - キャンセルボタン
     - 完了ポップアップ
 
 ### MM104(検索)
 - [MM104-01]入力画面/input-page
-  - 入力フォーム/input-form
+  - 入力フォーム/form
     - 名前
     - 住所
     - 電話番号
