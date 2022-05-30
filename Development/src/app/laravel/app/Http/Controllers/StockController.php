@@ -68,7 +68,7 @@ class StockController extends Controller
         $stocks_query = Stock::orderBy('document_id');
         foreach ($documents as $document)
         {
-            var_dump($document['id']); # test-code
+
 
             $stocks_query->orWhere('document_id', $document['id']);
         }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 use Validator;
 use App\Models\Document;
 use App\Models\Category;
@@ -213,7 +214,21 @@ class DocumentController extends Controller
     public function destroy($id)
     {
         $document = \App\Models\Document::find($id);
-        $document->delete();
+        try {
+            $document->delete();
+        } catch (QueryException $error) {
+            return redirect( route('documents.error'))->with('type', 'sql');;
+        }
+
         return redirect(route('documents.index'));
+    }
+
+    public function error(Request $request){
+        $type = $request->session()->get("type");
+        $request->session()->forget("type");
+
+        if($type == 'sql'){
+            return view('documents.error-sql');
+        }
     }
 }
