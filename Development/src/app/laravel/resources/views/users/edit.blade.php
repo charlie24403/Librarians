@@ -14,7 +14,7 @@
 @include('commons/flash')
 <form action="{{ route('users.update_post', $user->id)}}" method="post">
     @csrf
-    @include('users.commons.form')
+    @include('users/commons/form')
 
     <button type="submit" class="btn btn-primary">更新</button>
 
@@ -23,3 +23,4 @@
     </a>
 </form>
 </div>
+@endsection
