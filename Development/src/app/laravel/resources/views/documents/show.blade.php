@@ -10,13 +10,16 @@
 <!-- content -->
 @section('content')
 <div class = "detail-page">
-    @if(isset($edited))
+    <!-- @if(isset($edited))
         <a href="{{ route('documents.search')}}">
             <button type="button">検索に戻る</button>
         </a>
     @else
         <button type="button" onclick="history.back()">戻る</button>
-    @endif
+    @endif -->
+    <a href="{{ route('documents.search')}}">
+        <button type="button">検索に戻る</button>
+    </a>
 
     @include('documents/commons/object_detail')
     <a href="{{ route('documents.edit', $document->id) }}">

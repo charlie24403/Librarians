@@ -10,16 +10,17 @@
 <!-- content -->
 @section('content')
 <div class = "detail-page">
-    @include('users/commons/data_detail')
-    <p>
-        <a href="{{ route('users.edit', $user->id) }}">
-            <button type="button">変更</button>
-        </a>
-    </p>
-
-    <a href="#" onclick="deleteuser()">
-        <button type="button">削除</button>
+    <a href="{{ route('users.search')}}">
+        <button type="button">検索に戻る</button>
     </a>
+
+    @include('users/commons/data_detail')
+    <a href="{{ route('users.edit', $user->id) }}">
+        <button type="button">変更</button>
+    </a>
+
+    <button type="button" onclick="deleteuser()">削除</button>
+
     <form action="{{  route('users.destroy', $user) }}" method ="post"
     id ="delete-form">
     @csrf
@@ -36,8 +37,6 @@
     }
     </script>
 
-    <a href="{{ route('users.index')}}">
-        <button type="button">会員一覧に戻る</button>
-    </a>
+
 </div>
 @endsection
