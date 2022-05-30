@@ -15,7 +15,7 @@ class LendingController extends Controller
     private $validator = [
 		"user_id" => "required",
 		"document_id" => "required",
-		"return_date" => "required|date|after:tomorrow",
+		"return_date" => "required|date|after:today",
 	];
 
 
@@ -48,7 +48,7 @@ class LendingController extends Controller
         if ($request->return_date) {
             $query->where('return_date', $request->return_date);
         }
-        
+
         $lendings = $query->paginate(10);
         return view('lendings.index', ['lendings' => $lendings]);
 
@@ -134,9 +134,9 @@ class LendingController extends Controller
     public function show($id)
     {
         $lendings = \App\Models\Lending::find($id);
-        $documents = \App\Models\Document::all();
-        $users = \App\Models\User::all();
-        return view('lendings.show', ['lendings' => $lendings ,'documents' => $documents, 'users' => $users] );
+        $user = \App\Models\User::find($lendings->user_id);
+        $document = \App\Models\Document::find($lendings->document_id);
+        return view('lendings.show', ['lendings' => $lendings ,'document' => $document, 'user' => $user] );
     }
 
     /**
@@ -167,11 +167,11 @@ class LendingController extends Controller
             'finishing_date' => $request->finishing_date,
         ]);
         $lendings = Lending::find($id);
-        
+
         return view("lendings.update_complete", ['lendings' => $lendings]);
     }
 
-    public function complete(){	
+    public function complete(){
 		return view("lendings.form_complete");
 	}
 

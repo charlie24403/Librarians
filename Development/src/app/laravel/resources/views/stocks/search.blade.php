@@ -10,11 +10,13 @@
 
 <!-- content -->
 @section('content')
-    <form action="{{ route('stocks.index') }}" method="get">
-        @include('/stocks/commons/form')
-        <button type="submit">検索</button>
-        <a href="{{ route('stocks.search') }}">
-            <button type="button">キャンセル</button>
-        </a>
-    </form>
+    <div class="input-page">
+        <form action="{{ route('stocks.index') }}" method="get">
+                @include('/stocks/commons/form')
+                <button type="submit">検索</button>
+                <a href="{{ route('stocks.search') }}">
+                    <button type="button">キャンセル</button>
+                </a>
+        </form>
+    </div>
 @endsection

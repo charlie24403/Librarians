@@ -10,11 +10,13 @@
 
 <!-- content -->
 @section('content')
-    <form action="{{ route('documents.index') }}" method="get">
-        @include('/documents/commons/form')
-        <button type="submit">検索</button>
-        <a href="{{ route('documents.search') }}">
-            <button type="button">キャンセル</button>
-        </a>
-    </form>
+    <div class="input-page">
+        <form action="{{ route('documents.index') }}" method="get">
+            @include('/documents/commons/form')
+            <button type="submit">検索</button>
+            <a href="{{ route('documents.search') }}">
+                <button type="button">キャンセル</button>
+            </a>
+        </form>
+    </div>
 @endsection

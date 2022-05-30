@@ -17,11 +17,11 @@
     <p>会員ID</p>
     {{ $lendings->user_id }}
     <p>会員名</p>
-    {{ $users[$lendings->user_id]->name }}
+    {{ $user->name }}
     <p>資料ID</p>
     {{ $lendings->document_id }}
     <p>資料名</p>
-    {{ $documents[$lendings->document_id]->title }}
+    {{ $document->title }}
     <p>貸出日</p>
     {{ $lendings->created_at }}
     <p>返却期日</p>

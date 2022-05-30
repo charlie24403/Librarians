@@ -10,6 +10,8 @@
 
 <!-- content -->
 @section('content')
-    <button type="button" onclick="history.back()">再検索</button>
-    @include('stocks.commons.stocks_datalist')
+    <div class="result-page">
+        <button type="button" onclick="history.back()">再検索</button>
+        @include('stocks.commons.stocks_datalist')
+    </div>
 @endsection

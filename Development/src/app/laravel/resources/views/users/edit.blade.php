@@ -1,13 +1,14 @@
 <!-- env -->
-<<<<<<< HEAD
 @section('page_title', '更新情報入力')
 <?php
     $IS_MENU = FALSE;
     $CATEGORY = 'user';
 ?>
 
+<!-- layout -->
 @extends('layouts.app')
 
+<!-- content -->
 @section('content')
 <div class = "input-page">
     @include('commons/flash')
