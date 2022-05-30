@@ -1,19 +1,20 @@
 <!-- env -->
-<<<<<<< HEAD
 @section('page_title', '更新情報入力')
 <?php
     $IS_MENU = FALSE;
     $CATEGORY = 'user';
 ?>
 
+<!-- layout -->
 @extends('layouts.app')
 
+<!-- content -->
 @section('content')
 @include('commons/flash')
-<form action="{{ route('users.update_post', $user->id)}}" method="post">  
+<form action="{{ route('users.update_post', $user->id)}}" method="post">
     @include('users/commons/form')
     <p>
-        <input class="btn btn-primary" type="submit" value="登録"/>    
+        <input class="btn btn-primary" type="submit" value="登録"/>
     </p>
 
     <p>
