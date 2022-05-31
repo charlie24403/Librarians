@@ -13,11 +13,11 @@
     <div class="menu-button">
         <!--新規会員登録-->
         <a href="{{ route('users.create') }}">
-            <button type="button">新規会員登録</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg">新規会員登録</button>
         </a>
         <!--会員検索-->
         <a href="{{ route('users.search') }}">
-            <button type="button">会員情報検索</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg">会員情報検索</button>
         </a>
     </div>
 @endsection

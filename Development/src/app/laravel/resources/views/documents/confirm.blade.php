@@ -18,8 +18,8 @@
             <form action="{{ route("documents.store") }}" method="post">
         @endif
             @include('documents/commons/array_detail')
-            <button type="submit">確認</button>
-            <button type="button" onclick="history.back()">戻る</button>
+            <button type="submit" class="btn btn-outline-primary btn-lg">確認</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg" onclick="history.back()">戻る</button>
         </form>
     </div>
 @endsection

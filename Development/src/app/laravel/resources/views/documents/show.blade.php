@@ -18,14 +18,14 @@
         <button type="button" onclick="history.back()">戻る</button>
     @endif -->
     <a href="{{ route('documents.search')}}">
-        <button type="button">検索に戻る</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg">検索に戻る</button>
     </a>
 
     @include('documents/commons/object_detail')
     <a href="{{ route('documents.edit', $document->id) }}">
-        <button type="button">編集</button>
+        <button type="button" class="btn btn-outline-primary btn-lg">編集</button>
     </a>
-    <button type="button" onclick="deleteReservation()">削除</button>
+    <button type="button" class="btn btn-outline-primary btn-lg"  onclick="deleteReservation()">削除</button>
 
     <form action="{{ route('documents.destroy', $document) }}" method ="post" id ="delete-form">
         @csrf

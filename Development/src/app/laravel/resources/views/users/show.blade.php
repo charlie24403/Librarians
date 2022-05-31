@@ -11,15 +11,15 @@
 @section('content')
 <div class = "detail-page">
     <a href="{{ route('users.search')}}">
-        <button type="button">検索に戻る</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg">検索に戻る</button>
     </a>
 
     @include('users/commons/data_detail')
     <a href="{{ route('users.edit', $user->id) }}">
-        <button type="button">変更</button>
+        <button type="button" class="btn btn-outline-primary btn-lg">変更</button>
     </a>
 
-    <button type="button" onclick="deleteuser()">削除</button>
+    <button type="button" class="btn btn-outline-primary btn-lg" onclick="deleteuser()">削除</button>
 
     <form action="{{  route('users.destroy', $user) }}" method ="post"
     id ="delete-form">

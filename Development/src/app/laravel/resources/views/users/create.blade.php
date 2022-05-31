@@ -14,9 +14,9 @@
         @include('commons/flash')
         <form action="{{ route('users.post')}}" method="post">
             @include('users/commons/form')
-            <button type="submit">確認</button>
+            <button type="submit" class="btn btn-outline-primary btn-lg">確認</button>
             <a href="{{ route('users.create') }}">
-                <button type="button">キャンセル</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg">キャンセル</button>
             </a>
         </form>
     </div>

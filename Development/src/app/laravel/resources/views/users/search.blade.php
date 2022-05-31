@@ -13,9 +13,9 @@
 <div class = "input-page">
     <form action="{{ route('users.index') }}" method="get">
         @include('users/commons/search')
-        <button type="submit">検索</button>
+        <button type="submit" class="btn btn-outline-primary btn-lg">検索</button>
         <a href="{{ route('users.search') }}">
-            <button type="button">キャンセル</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg">キャンセル</button>
         </a>
     </form>
 </div>

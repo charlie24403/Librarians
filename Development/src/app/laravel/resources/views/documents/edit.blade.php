@@ -17,8 +17,8 @@
             <input type="hidden" name="document_id" value="{{ $document['id'] }}">
 
             @include('/documents/commons/form_edit')
-            <button type="submit">確認</button>
-            <button type="button" onclick="history.back()">キャンセル</button>
+            <button type="submit" class="btn btn-outline-primary btn-lg">確認</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg" onclick="history.back()">キャンセル</button>
         </form>
     </div>
 @endsection

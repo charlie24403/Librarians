@@ -13,8 +13,8 @@
 		<form method="post" action="{{ route('users.update_send', $user->id) }}">
 			@include('users/commons/confirm')
 
-            <button type="submit">確認</button>
-            <button type="button" onclick="history.back()">戻る</button>
+            <button type="submit" class="btn btn-outline-primary btn-lg">確認</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg" onclick="history.back()">戻る</button>
 
 		</form>
 </div>

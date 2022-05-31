@@ -12,6 +12,6 @@
 @section('content')
     <div class="error-page">
         <p>在庫管理機能で、この情報を使用しているため削除できません。削除するためには、関連する在庫情報を削除が必要です。</p>
-        <button type="button" onclick="history.back()">戻る</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg" onclick="history.back()">戻る</button>
     </div>
 @endsection
