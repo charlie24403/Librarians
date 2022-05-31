@@ -15,38 +15,50 @@
     </head>
     <body>
         <header>
-            @if($IS_MENU)
-                <ul class = "navigation">
-                        <li>
-                            <a href="{{ route('home') }}">トップページ</a>
-                        </li>
-                </ul>
-            @else
-                <ul class = "navigation">
-                        <li>
-                            <a href="{{ route('home') }}">トップページ</a>
-                        </li>
-                        <li>
-                            @switch($CATEGORY)
-                                @case('user')
-                                    <a href="{{ route('users.menu') }}">メニューに戻る</a>
-                                    @break
-                                @case('documents')
-                                    <a href="{{ route('documents.menu') }}">メニューに戻る</a>
-                                    @break
-                                @case('stocks')
-                                    <a href="{{ route('stocks.menu') }}">メニューに戻る</a>
-                                    @break
-                                @case('lendings')
-                                    <a href="{{ route('lendings.menu') }}">メニューに戻る</a>
-                                    @break
-                                @default
-                                    <a href="{{ route('home') }}">メニューに戻る</a>
-                            @endswitch
-                        </li>
-                </ul>
-            @endif
-            <h1>図書管理システム</h1>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{{ route('home') }}">
+                    <h1>
+                        <img src="{{asset('/assets/images/book-half.svg')}}" alt="" width="45" height="50" class="d-inline-block align-text-top">
+                        図書管理システム
+                    </h1>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+
+                    @if($IS_MENU)
+                        <ul class="navbar-nav">
+
+                        </ul>
+                    @else
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                    @switch($CATEGORY)
+                                        @case('user')
+                                            <a class="nav-link" href="{{ route('users.menu') }}">メニューに戻る</a>
+                                            @break
+                                        @case('documents')
+                                            <a class="nav-link" href="{{ route('documents.menu') }}">メニューに戻る</a>
+                                            @break
+                                        @case('stocks')
+                                            <a class="nav-link" href="{{ route('stocks.menu') }}">メニューに戻る</a>
+                                            @break
+                                        @case('lendings')
+                                            <a class="nav-link" href="{{ route('lendings.menu') }}">メニューに戻る</a>
+                                            @break
+                                        @default
+                                            <a class="nav-link" href="{{ route('home') }}">メニューに戻る</a>
+                                    @endswitch
+                                </li>
+                        </ul>
+                    @endif
+
+                    </div>
+                </div>
+            </nav>
         </header>
         <main>
             <h2>@yield('page_title')</h2>
