@@ -40,10 +40,10 @@
                 </dl>
             </div>
 
-            <button type="submit">返却</button>
+            <button type="submit" class="btn btn-outline-primary btn-lg">返却</button>
 
             <a href="{{ route('lendings.show', $lendings->id) }}">
-                    <button type="button">キャンセル</button>
+                    <button type="button" class="btn btn-outline-secondary btn-lg">キャンセル</button>
             </a>
         </form>
     </div>

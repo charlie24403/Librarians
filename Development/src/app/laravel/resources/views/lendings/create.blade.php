@@ -21,9 +21,9 @@
 
         <form action="{{ route('lendings.confirm') }}" method="post">
             @include('/lendings/commons/search')
-            <button type="submit">確認</button>
+            <button type="submit" class="btn btn-outline-primary btn-lg">確認</button>
             <a href="{{ route('lendings.create') }}">
-                <button type="button">キャンセル</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg">キャンセル</button>
             </a>
         </form>
     </div>

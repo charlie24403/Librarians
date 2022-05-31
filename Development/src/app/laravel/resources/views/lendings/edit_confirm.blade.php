@@ -28,7 +28,7 @@
             <dd> {{ $input["finishing_date"] }}</dd>
         </dl>
 
-        <button type="submit">確認</button>
-        <button type="button" onclick="history.back()">戻る</button>
+        <button type="submit" class="btn btn-outline-primary btn-lg">確認</button>
+        <button type="button" onclick="history.back()" class="btn btn-outline-secondary btn-lg">戻る</button>
     </form>
 @endsection

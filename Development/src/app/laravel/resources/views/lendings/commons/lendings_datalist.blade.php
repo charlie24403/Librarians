@@ -20,7 +20,7 @@
                     <td>{{ $lending->return_date }}</td>
                     <td>{{ $lending->finishing_date }}</td>
                     <td>
-                        <a href="{{ route('lendings.show', $lending->id) }}"><button type="button">詳細</button></a>
+                        <a href="{{ route('lendings.show', $lending->id) }}"><button type="button" class="btn btn-outline-secondary btn-lg">詳細</button></a>
                     </td>
                 </tr>
             @endforeach
