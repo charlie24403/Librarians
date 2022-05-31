@@ -17,8 +17,8 @@
             <input type="hidden" name="stock_id" value="{{ $stock['id'] }}">
 
             @include('/stocks/commons/form_edit')
-            <button type="submit">変更</button>
-            <button type="button" onclick="history.back()">キャンセル</button>
+            <button type="submit" class="btn btn-outline-primary btn-lg">変更</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg" onclick="history.back()">キャンセル</button>
         </form>
     </div>
 @endsection

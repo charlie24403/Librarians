@@ -16,9 +16,9 @@
             <input type="hidden" name="confirm_type" value="create">
 
             @include('/documents/commons/form')
-            <button type="submit">確認</button>
+            <button type="submit" class="btn btn-outline-primary btn-lg">確認</button>
             <a href="{{ route('documents.create') }}">
-                <button type="button">キャンセル</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg">キャンセル</button>
             </a>
         </form>
     </div>

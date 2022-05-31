@@ -16,10 +16,10 @@
     @csrf
     @include('users/commons/form_edit')
 
-    <button type="submit" class="btn btn-primary">更新</button>
+    <button type="submit" class="btn btn-outline-primary btn-lg">更新</button>
 
     <a href="{{ route('users.show', $user->id) }}">
-            <button type="button">キャンセル</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg">キャンセル</button>
     </a>
 </form>
 </div>

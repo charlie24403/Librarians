@@ -17,14 +17,14 @@
         <button type="button" onclick="history.back()">戻る</button>
     @endif -->
     <a href="{{ route('stocks.search')}}">
-        <button type="button">検索に戻る</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg">検索に戻る</button>
     </a>
 
     @include('stocks/commons/object_detail')
     <a href="{{ route('stocks.edit', $stock->id) }}">
-        <button type="button">編集</button>
+        <button type="button" class="btn btn-outline-primary btn-lg">編集</button>
     </a>
-    <button type="button" onclick="deleteReservation()">削除</button>
+    <button type="button" class="btn btn-outline-primary btn-lg" onclick="deleteReservation()">削除</button>
 
     <form action="{{ route('stocks.waste', $stock->id) }}" method ="post" id ="delete-form">
         @method('patch')
