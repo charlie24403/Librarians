@@ -12,10 +12,10 @@
 @section('content')
     <div class="menu-button">
         <a href="{{ route('documents.create') }}">
-            <button type="button">新規資料登録</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg">新規資料登録</button>
         </a>
         <a href="{{ route('documents.search') }}">
-            <button type="button">資料情報検索</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg">資料情報検索</button>
         </a>
     </div>
 @endsection
