@@ -20,22 +20,22 @@
                 <dl>
                     <dt>会員ID</dt>
                     <dd>
-                        <input type="number" name="user_id" value="{{ $lendings->user_id }}">
+                        <input type="number" name="user_id" value="{{ $lendings->user_id }}" class="form-control" id="exampleFormControlInput1" style="width: 200px">
                     </dd>
 
                     <dt>資料ID</dt>
                     <dd>
-                        <input type="number" name="document_id" value="{{ $lendings->document_id }}">
+                        <input type="number" name="document_id" value="{{ $lendings->document_id }}" class="form-control" id="exampleFormControlInput1" style="width: 200px" >
                     </dd>
 
                     <dt>貸出期日</dt>
                     <dd>
-                        <input type="date" name="return_date" value="{{ $lendings->return_date }}">
+                        <input type="date" name="return_date" value="{{ $lendings->return_date }}" class="form-control" id="exampleFormControlInput1" style="width: 200px" >
                     </dd>
 
                     <dt>返却日</dt>
                     <dd>
-                        <input type="date" name="finishing_date" value="{{ $lendings->finishing_date }}">
+                        <input type="date" name="finishing_date" value="{{ $lendings->finishing_date }}" class="form-control" id="exampleFormControlInput1" style="width: 200px">
                     </dd>
                 </dl>
             </div>
