@@ -1,5 +1,5 @@
 <!-- env -->
-@section('page_title', '予約詳細画面')
+@section('page_title', '貸出詳細画面')
 <?php
     $IS_MENU = FALSE;
     $CATEGORY = 'lendings';
