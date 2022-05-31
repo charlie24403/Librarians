@@ -12,7 +12,7 @@
 @section('content')
 <div class = "detail-page">
     <a href="{{ route('lendings.search') }}">
-        <button type="button">検索に戻る</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg">検索に戻る</button>
     </a>
 
     <div class = "data-detail">
@@ -44,9 +44,9 @@
         </dl>
     </div>
 
-    <a href="{{ route('lendings.edit', $lendings->id) }}"><button type="button">返却</button></a>
+    <a href="{{ route('lendings.edit', $lendings->id) }}"><button type="button" class="btn btn-outline-primary btn-lg ">返却</button></a>
 
-    <a href="#" onclick="deleteReservation()"><button type="button">削除</button></a>
+    <a href="#" onclick="deleteReservation()"><button type="button" class="btn btn-outline-primary btn-lg ">削除</button></a>
     <form action="{{  route('lendings.destroy', $lendings) }}" method ="post"
         id ="delete-form">
         @csrf

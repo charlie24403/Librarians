@@ -12,10 +12,10 @@
 @section('content')
     <div class="menu-button">
         <a href="{{ route('lendings.create') }}">
-            <button type="button">新規貸出登録</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg">新規貸出登録</button>
         </a>
         <a href="{{ route('lendings.search') }}" >
-            <button type="button">貸出情報検索</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg">貸出情報検索</button>
         </a>
     </div>
 @endsection

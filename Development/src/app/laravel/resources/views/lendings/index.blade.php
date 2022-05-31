@@ -11,7 +11,7 @@
 <!-- content -->
 @section('content')
     <div class="result-page">
-        <button type="button" onclick="history.back()">再検索</button>
+        <button type="button" onclick="history.back()"class="btn btn-outline-secondary btn-lg" >再検索</button>
         @include('/lendings/commons/lendings_datalist')
     </div>
 @endsection
